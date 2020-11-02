@@ -1,0 +1,29 @@
+body{
+    background-image: url('../img/netflix.gif');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;	
+}
+
+.btn{
+	background-color: #e50913;
+	border-color: #b1060f;
+	color: white;
+}
+
+.text-center{
+	color: white;
+}
+
+.form-control:focus{
+	color: #495057;
+	background-color: #fff;
+	border-color: #b1060f  !important;
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgb(229 9 19 / 30%) !important;
+}
+
+.logo{
+    border: 1px solid #e50913;*
+}
