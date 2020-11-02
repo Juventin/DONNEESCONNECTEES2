@@ -11,6 +11,7 @@ var fs = require("fs");
 var csv = require('csv-parser');
 
 const googleTrends = require('google-trends-api');
+var allocine = require('allocine-api');
 
 var cors = require('cors');
 var corsOptions = {
