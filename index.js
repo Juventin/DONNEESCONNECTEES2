@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000 ;
 var fetch = require('node-fetch');
 var https = require('https');
 var fs = require("fs");
+var csv = require('csv-parser');
 
 const googleTrends = require('google-trends-api');
 
@@ -26,9 +27,9 @@ var corsOptions = {
 app.use(express.static('docs'));
 
 
-app.get("/:name", function(req, res){
-    res.send("hello : " + req.params.name );
-})
+// app.get("/:name", function(req, res){
+//     res.send("hello : " + req.params.name );
+// })
 
 app.get("/trends/netflix", function(req, res){
     googleTrends.interestByRegion({
@@ -44,6 +45,7 @@ app.get("/trends/netflix", function(req, res){
     });
 })
 
+//data-allocine2
 
 // Recherche de tous les films "spiderman"
 allocine.api('search', {q: 'spiderman', filter: 'movie'}, function(error, results) {
@@ -71,6 +73,16 @@ allocine.api('movie', {code: '143067'}, function(error, result) {
 //     .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 //     .then(data => console.log(data))
 // })
+
+app.get("/chomage", cors(corsOptions), function(req, res){
+    let url = "http://jeremy.juventin.free.fr/files/chomage.json" ;
+    fetch(url)
+    .then(res => res.json())
+    .then(json => {
+        res.send(json);
+    });
+})
+// main
 
 
 app.listen(port, function () {
