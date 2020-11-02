@@ -16,8 +16,18 @@ app.get("/:name", function(req, res){
     res.send("hello : " + req.params.name );
 })
 
-app.get("/fetchair/shangai", function(req, res){
+app.get("/cocktail/margarita", function(req, res){
+    console.log('ok')
     let url = "http://api.waqi.info/feed/shanghai/?token=demo" ;
+    fetch(url)
+    .then(res => res.json())
+    .then(json => {
+        res.send(json);
+    });
+})
+
+app.get("/test/margarita", function(req, res){
+    let url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita" ;
     fetch(url)
     .then(res => res.json())
     .then(json => {
