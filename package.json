@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/natoine/coursUM320202021-M2#readme",
   "dependencies": {
+    "allocine-api": "^0.1.9",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
