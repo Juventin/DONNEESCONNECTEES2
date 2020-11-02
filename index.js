@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000 ;
 var fetch = require('node-fetch');
 var https = require('https');
 var fs = require("fs");
+var csv = require('csv-parser');
 
 const googleTrends = require('google-trends-api');
 
@@ -26,9 +27,9 @@ var corsOptions = {
 app.use(express.static('docs'));
 
 
-app.get("/:name", function(req, res){
-    res.send("hello : " + req.params.name );
-})
+// app.get("/:name", function(req, res){
+//     res.send("hello : " + req.params.name );
+// })
 
 app.get("/trends/netflix", function(req, res){
     googleTrends.interestByRegion({
@@ -44,15 +45,14 @@ app.get("/trends/netflix", function(req, res){
     });
 })
 
-// app.get("/cocktail/margarita", function(req, res){
-//     console.log('ok')
-//     let url = "https://www.insee.fr/fr/statistiques/fichier/2012804/sl_etc_2020T2.xls" ;
-//     console.log('on y va')
-//     fetch(url)
-//     .then(res => res.text())
-//     .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-//     .then(data => console.log(data))
-// })
+app.get("/chomage", cors(corsOptions), function(req, res){
+    let url = "http://jeremy.juventin.free.fr/files/chomage.json" ;
+    fetch(url)
+    .then(res => res.json())
+    .then(json => {
+        res.send(json);
+    });
+})
 
 
 app.listen(port, function () {
