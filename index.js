@@ -27,9 +27,9 @@ var corsOptions = {
 app.use(express.static('docs'));
 
 
-app.get("/:name", function(req, res){
-    res.send("hello : " + req.params.name );
-})
+// app.get("/:name", function(req, res){
+//     res.send("hello : " + req.params.name );
+// })
 
 app.get("/trends/netflix", function(req, res){
     googleTrends.interestByRegion({
@@ -45,15 +45,12 @@ app.get("/trends/netflix", function(req, res){
     });
 })
 
-app.get("/cocktail/margarita", function(req, res){
-    console.log('ok')
-    fs.createReadStream('files/chomage.csv')
-    .pipe(csv())
-    .on('data', (row) => {
-        console.log(row);
-    })
-    .on('end', () => {
-        console.log('CSV file successfully processed');
+app.get("/chomage", cors(corsOptions), function(req, res){
+    let url = "http://jeremy.juventin.free.fr/files/chomage.json" ;
+    fetch(url)
+    .then(res => res.json())
+    .then(json => {
+        res.send(json);
     });
 })
 

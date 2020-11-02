@@ -1,0 +1,87 @@
+[
+  {
+    "Code": 11,
+    "Libelle": "ILE-DE-FRANCE",
+    "T2_2020": "6,3"
+  },
+  {
+    "Code": 24,
+    "Libelle": "CENTRE",
+    "T2_2020": "6,8"
+  },
+  {
+    "Code": 27,
+    "Libelle": "BOURGOGNE-FRANCHE-COMTE",
+    "T2_2020": "6,4"
+  },
+  {
+    "Code": 28,
+    "Libelle": "NORMANDIE",
+    "T2_2020": "7,3"
+  },
+  {
+    "Code": 32,
+    "Libelle": "HAUTS-DE-FRANCE",
+    "T2_2020": "8,6"
+  },
+  {
+    "Code": 44,
+    "Libelle": "GRAND-EST",
+    "T2_2020": "6,9"
+  },
+  {
+    "Code": 52,
+    "Libelle": "PAYS DE LA LOIRE",
+    "T2_2020": "6,6"
+  },
+  {
+    "Code": 53,
+    "Libelle": "BRETAGNE",
+    "T2_2020": "6,3"
+  },
+  {
+    "Code": 75,
+    "Libelle": "NOUVELLE-AQUITAINE",
+    "T2_2020": "6,8"
+  },
+  {
+    "Code": 76,
+    "Libelle": "OCCITANIE",
+    "T2_2020": "8,4"
+  },
+  {
+    "Code": 84,
+    "Libelle": "AUVERGNE-RHONE-ALPES",
+    "T2_2020": "6,4"
+  },
+  {
+    "Code": 93,
+    "Libelle": "PROVENCE-ALPES-COTE D'AZUR",
+    "T2_2020": "8,3"
+  },
+  {
+    "Code": 94,
+    "Libelle": "CORSE",
+    "T2_2020": "7,6"
+  },
+  {
+    "Code": 1,
+    "Libelle": "GUADELOUPE",
+    "T2_2020": "13,1"
+  },
+  {
+    "Code": 2,
+    "Libelle": "MARTINIQUE",
+    "T2_2020": "10,3"
+  },
+  {
+    "Code": 3,
+    "Libelle": "GUYANE",
+    "T2_2020": "10,8"
+  },
+  {
+    "Code": 4,
+    "Libelle": "REUNION",
+    "T2_2020": "13,7"
+  }
+]
