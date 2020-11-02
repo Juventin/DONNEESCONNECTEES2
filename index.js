@@ -47,7 +47,7 @@ app.get("/trends/netflix", function(req, res){
 
 app.get("/cocktail/margarita", function(req, res){
     console.log('ok')
-    fs.createReadStream('files/chomage.csv.csv')
+    fs.createReadStream('files/chomage.csv')
     .pipe(csv())
     .on('data', (row) => {
         console.log(row);
