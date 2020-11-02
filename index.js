@@ -9,6 +9,15 @@ var fetch = require('node-fetch');
 var https = require('https');
 const googleTrends = require('google-trends-api');
 
+
+
+
+//serves static files
+app.use(express.static('docs'));
+
+
+
+
 app.get("/", function(req, res){
     res.send("helloWorld !");
 })
