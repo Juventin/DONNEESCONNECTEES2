@@ -25,5 +25,11 @@ body{
 }
 
 .logo{
-    border: 1px solid #e50913;*
+    /*border: 1px solid #e50913;*/
+}
+
+.form-signin{
+    background-color: black;
+    border: 4px solid #e50913;
+    opacity: 90%;
 }
