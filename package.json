@@ -19,6 +19,7 @@
   "homepage": "https://github.com/natoine/coursUM320202021-M2#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "google-trends-api": "^4.9.0",
     "https": "^1.0.0",
     "node-fetch": "^2.6.1"
   }

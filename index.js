@@ -7,6 +7,7 @@ const port = process.env.PORT || 3000 ;
 
 var fetch = require('node-fetch');
 var https = require('https');
+const googleTrends = require('google-trends-api');
 
 app.get("/", function(req, res){
     res.send("helloWorld !");
@@ -14,6 +15,20 @@ app.get("/", function(req, res){
 
 app.get("/:name", function(req, res){
     res.send("hello : " + req.params.name );
+})
+
+app.get("/trends/netflix", function(req, res){
+    googleTrends.interestByRegion({
+        keyword: 'netflix',
+        geo: "FR",
+        resolution: "REGION"
+    })
+    .then(function(results){
+        res.send(results);
+    })
+    .catch(function(err){
+        res.send('Oh no there was an error', err);
+    });
 })
 
 app.get("/cocktail/margarita", function(req, res){
