@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000 ;
 var fetch = require('node-fetch');
 var https = require('https');
 var fs = require("fs");
+var csv = require('csv-parser');
 
 const googleTrends = require('google-trends-api');
 
@@ -44,15 +45,17 @@ app.get("/trends/netflix", function(req, res){
     });
 })
 
-// app.get("/cocktail/margarita", function(req, res){
-//     console.log('ok')
-//     let url = "https://www.insee.fr/fr/statistiques/fichier/2012804/sl_etc_2020T2.xls" ;
-//     console.log('on y va')
-//     fetch(url)
-//     .then(res => res.text())
-//     .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-//     .then(data => console.log(data))
-// })
+app.get("/cocktail/margarita", function(req, res){
+    console.log('ok')
+    fs.createReadStream('files/chomage.csv.csv')
+    .pipe(csv())
+    .on('data', (row) => {
+        console.log(row);
+    })
+    .on('end', () => {
+        console.log('CSV file successfully processed');
+    });
+})
 
 
 app.listen(port, function () {
