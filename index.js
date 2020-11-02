@@ -45,6 +45,35 @@ app.get("/trends/netflix", function(req, res){
     });
 })
 
+//data-allocine2
+
+// Recherche de tous les films "spiderman"
+allocine.api('search', {q: 'spiderman', filter: 'movie'}, function(error, results) {
+    if(error) { console.log('Error : '+ error); return; }
+    
+    console.log('Voici les données retournées par l\'API Allociné:');
+    console.log(results);
+});
+
+// Informations sur un film particulier
+allocine.api('movie', {code: '143067'}, function(error, result) {
+    if(error) { console.log('Error : '+ error); return; }
+
+    console.log('Voici les données retournées par l\'API Allociné:');
+    console.log(result);
+});
+
+
+// app.get("/cocktail/margarita", function(req, res){
+//     console.log('ok')
+//     let url = "https://www.insee.fr/fr/statistiques/fichier/2012804/sl_etc_2020T2.xls" ;
+//     console.log('on y va')
+//     fetch(url)
+//     .then(res => res.text())
+//     .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+//     .then(data => console.log(data))
+// })
+
 app.get("/chomage", cors(corsOptions), function(req, res){
     let url = "http://jeremy.juventin.free.fr/files/chomage.json" ;
     fetch(url)
@@ -53,6 +82,7 @@ app.get("/chomage", cors(corsOptions), function(req, res){
         res.send(json);
     });
 })
+// main
 
 
 app.listen(port, function () {
