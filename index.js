@@ -80,10 +80,10 @@ app.get("/trends", function(req, res){
 
         // On le renvoie
         res.format({
-            'text/html': function () {
-                console.log(merged)
-                res.send("data fetched look your console");
-            },
+            // 'text/html': function () {
+            //     console.log(merged)
+            //     res.send("data fetched look your console");
+            // },
             'application/json': function () {
                 res.set('Content-Type', 'application/json');
                 res.json(merged);
