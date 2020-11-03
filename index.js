@@ -3,6 +3,7 @@
 var express = require('express');
 var app = express();
 
+app.use(express.static('docs'));
 const port = process.env.PORT || 3000;
 
 var fetch = require('node-fetch');
