@@ -33,3 +33,7 @@ body{
     border: 4px solid #e50913;
     opacity: 90%;
 }
+
+small{
+	font-size: 50% !important;
+}
