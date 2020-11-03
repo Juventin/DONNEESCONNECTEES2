@@ -28,10 +28,9 @@ var corsOptions = {
 
 //Gaelle test
 
-function getAllocine() {
-    var input = document.getElementById("name");//nom du film
+function getAllocine(filmName) {
     var result;
-    allocine.api('search', {q: input.value, filter: 'movie'}, function(error, results) {
+    allocine.api('search', {q: filmName, filter: 'movie'}, function(error, results) {
         if(error) { 
             console.log('Error : '+ error);
             return;
@@ -39,8 +38,13 @@ function getAllocine() {
         console.log('Voici les données retournées par l\'API Allociné:');
         console.log(results);
     });
+
+
 }
 
+app.get("/allocine", function (req, res) {
+        getAllocine("avatar");
+});
 //fin test gaelle
 
 function getTrendsPerRegion() {
