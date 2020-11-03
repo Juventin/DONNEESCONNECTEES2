@@ -41,22 +41,18 @@ function getRegions() {
     return data
 }
 
-function mergeData(arr1, arr2) {
-
-    console.log('on y rentre')
-    
+function mergeData(arr1, arr1key, arr2, arr2key) {
     
     let merged = [];
 
     for(let i=0; i<arr1.length; i++) {
     merged.push({
     ...arr1[i], 
-    ...(arr2.find((truc) => truc.geoName === arr1[i].Libelle))}
+    ...(arr2.find((truc) => truc[arr2key] === arr1[i][arr1key]))}
     );
     }
 
     return merged;
-    
 }
 
 app.get("/trends", function(req, res){
@@ -79,8 +75,10 @@ app.get("/trends", function(req, res){
         // Ok pour trends
         var trends = json['default']['geoMapData']
 
-        var merged = mergeData(regions, trends)
+        // On jointe les deux sur Libelle == geoName
+        var merged = mergeData(regions, 'Libelle', trends, 'geoName')
 
+        // On le renvoie
         res.send(merged)
     })
 })
