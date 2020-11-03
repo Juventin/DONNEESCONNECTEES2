@@ -11,6 +11,11 @@ var https = require('https');
 var fs = require("fs");
 
 const googleTrends = require('google-trends-api');
+var allocine = require('allocine-api');
+
+app.get("/", function(req, res){
+    res.send("coucou");
+})
 
 var cors = require('cors');
 var corsOptions = {
@@ -21,6 +26,26 @@ var corsOptions = {
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
+//Gaelle test
+
+function getAllocine(filmName) {
+    var result;
+    allocine.api('search', {q: filmName, filter: 'movie'}, function(error, results) {
+        if(error) { 
+            console.log('Error : '+ error);
+            return;
+        }
+        console.log('Voici les données retournées par l\'API Allociné:');
+        console.log(results);
+    });
+
+
+}
+
+app.get("/allocine", function (req, res) {
+        getAllocine("avatar");
+});
+//fin test gaelle
 
 function getTrendsPerRegion() {
     //serves static files
