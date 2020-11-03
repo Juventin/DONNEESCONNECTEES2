@@ -31,9 +31,10 @@ app.use(express.static('docs'));
 //     res.send("hello : " + req.params.name );
 // })
 
-app.get("/trends/:movie", function(req, res){
+app.get("/trends", function(req, res){
+    var movie = req.param("title"); 
     googleTrends.interestByRegion({
-        keyword: req.params.movie,
+        keyword: movie,
         geo: "FR",
         resolution: "REGION"
     })
