@@ -55,7 +55,20 @@ function mergeData(arr1, arr1key, arr2, arr2key) {
     return merged;
 }
 
-app.get("/trends", function(req, res){
+function mergeDataNoJointure(arr1, arr2) {
+    
+    let merged = [];
+    for(let i=0; i<arr1.length; i++) {
+        merged.push({
+        ...arr1[i],
+        ...arr2
+        });
+    }
+
+    return merged;
+}
+
+app.get("/trends", cors(corsOptions), function(req, res){
 
     // On récupère régions
     var regions = getRegions();
@@ -64,12 +77,24 @@ app.get("/trends", function(req, res){
     var movie = req.param("title"); 
     console.log(movie)
 
+    // On récupère les données du film demandé
+    var films;
+    var url = "https://api.betaseries.com/movies/search?key=c3796994ef78&title=" + movie;
+    fetch(url)
+        .then(res => res.json())
+        .then(json => {
+            films = json;
+        })
+
+
     // On récupère les données google trends
     googleTrends.interestByRegion({
         keyword: movie,
         geo: "FR",
         resolution: "REGION"
     })
+
+
     .then(res => JSON.parse(res))
     .then(json => {
         // Ok pour trends
@@ -78,15 +103,18 @@ app.get("/trends", function(req, res){
         // On jointe les deux sur Libelle == geoName
         var merged = mergeData(regions, 'Libelle', trends, 'geoName')
 
+        // On joint merged avec film
+        var merged2 = mergeDataNoJointure(merged, films);
+
         // On le renvoie
         res.format({
-            // 'text/html': function () {
-            //     console.log(merged)
-            //     res.send("data fetched look your console");
-            // },
+            /*'text/html': function () {
+                console.log(merged)
+                res.send("data fetched look your console");
+            },*/
             'application/json': function () {
                 res.set('Content-Type', 'application/json');
-                res.json(merged);
+                res.json(merged2);
             }
         })
     })
