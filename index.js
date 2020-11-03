@@ -30,13 +30,11 @@ var corsOptions = {
 /*
 function getAllocine(filmName) {
     var result;
-<<<<<<< HEAD
     allocine.api('search', {q: filmName, filter: 'movie'}, function(error, results) {
         if(error) { 
             //console.log('Error : '+ error);
             //return;
             res.send('Oh no there was an error', error);
-=======
     allocine.api('search', {
         q: filmName,
         filter: 'movie'
@@ -44,7 +42,6 @@ function getAllocine(filmName) {
         if (error) {
             console.log('Error : ' + error);
             return;
->>>>>>> 2d9a80f0d623e0858ca72bdd137b2413be888704
         }
         //console.log('Voici les données retournées par l\'API Allociné:');
         //console.log(results);
@@ -55,25 +52,22 @@ function getAllocine(filmName) {
 }
 
 app.get("/allocine", function (req, res) {
-<<<<<<< HEAD
-        getAllocine("spiderman");
-
-=======
-    getAllocine("avatar");
->>>>>>> 2d9a80f0d623e0858ca72bdd137b2413be888704
+    getAllocine("spiderman");
 });
 */
+//source : https://www.npmjs.com/package/allocine-api
+
 app.get("/allocine", function (req, res) {
     allocine.api('search', {
         q: 'spiderman', 
         filter: 'movie'
     })
-        .then(function (results) {
-            res.send(results);
-        })
-        .catch(function (err) {
-            res.send('Oh no there was an error', err);
-        });
+    .then(function (results) {
+        res.send(results);
+    })
+    .catch(function (err) {
+        res.send('Oh no there was an error', err);
+    });
 })
 
 
