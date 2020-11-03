@@ -31,34 +31,65 @@ app.use(express.static('docs'));
 //     res.send("hello : " + req.params.name );
 // })
 
-app.get("/trends/:movie", function(req, res){
+function getRegions() {
+
+    let filePath = path.join('files', 'chomage.json');
+
+    let rawdata = fs.readFileSync(filePath);
+    let data = JSON.parse(rawdata);
+
+    return data
+}
+
+function mergeData(arr1, arr1key, arr2, arr2key) {
+    
+    let merged = [];
+
+    for(let i=0; i<arr1.length; i++) {
+    merged.push({
+    ...arr1[i], 
+    ...(arr2.find((truc) => truc[arr2key] === arr1[i][arr1key]))}
+    );
+    }
+
+    return merged;
+}
+
+app.get("/trends", function(req, res){
+
+    // On récupère régions
+    var regions = getRegions();
+
+    // On récupère le film demandé
+    var movie = req.param("title"); 
+    console.log(movie)
+
+    // On récupère les données google trends
     googleTrends.interestByRegion({
-        keyword: req.params.movie,
+        keyword: movie,
         geo: "FR",
         resolution: "REGION"
     })
-    .then(function(results){
-        res.send(results);
+    .then(res => JSON.parse(res))
+    .then(json => {
+        // Ok pour trends
+        var trends = json['default']['geoMapData']
+
+        // On jointe les deux sur Libelle == geoName
+        var merged = mergeData(regions, 'Libelle', trends, 'geoName')
+
+        // On le renvoie
+        res.format({
+            // 'text/html': function () {
+            //     console.log(merged)
+            //     res.send("data fetched look your console");
+            // },
+            'application/json': function () {
+                res.set('Content-Type', 'application/json');
+                res.json(merged);
+            }
+        })
     })
-    .catch(function(err){
-        res.send('Oh no there was an error', err);
-    });
-})
-
-app.get("/chomage", cors(corsOptions), function(req, res){
-   
-    filePath = path.join('files', 'chomage.json');
-
-    fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
-        if (!err) {
-            console.log('received data: ' + data);
-            res.writeHead(200, {'Content-Type': 'application/json'});
-            res.write(data);
-            res.end();
-        } else {
-            console.log(err);
-        }
-    });
 })
 
 
