@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000 ;
 var fetch = require('node-fetch');
 var https = require('https');
 var fs = require("fs");
-var csv = require('csv-parser');
+var path = require('path');
 
 const googleTrends = require('google-trends-api');
 
@@ -18,7 +18,7 @@ var corsOptions = {
         'https://netflixbutnochill.herokuapp.com/', 
         'https://juventin.github.io/DONNEESCONNECTEES2/'
     ],
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    optionsSuccessStatus: 200
 }
 
 
@@ -31,9 +31,9 @@ app.use(express.static('docs'));
 //     res.send("hello : " + req.params.name );
 // })
 
-app.get("/trends/netflix", function(req, res){
+app.get("/trends/:movie", function(req, res){
     googleTrends.interestByRegion({
-        keyword: 'netflix',
+        keyword: req.params.movie,
         geo: "FR",
         resolution: "REGION"
     })
@@ -46,11 +46,18 @@ app.get("/trends/netflix", function(req, res){
 })
 
 app.get("/chomage", cors(corsOptions), function(req, res){
-    let url = "http://jeremy.juventin.free.fr/files/chomage.json" ;
-    fetch(url)
-    .then(res => res.json())
-    .then(json => {
-        res.send(json);
+   
+    filePath = path.join('files', 'chomage.json');
+
+    fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
+        if (!err) {
+            console.log('received data: ' + data);
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.write(data);
+            res.end();
+        } else {
+            console.log(err);
+        }
     });
 })
 
