@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="./img/unnamed.jpg">
 
-    <title>Netflix & No Chill</title>
+    <title>Netflix but No Chill</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +18,8 @@
   </head>
 
   <body>
-    <form method="get" class="form-signin">
+
+    <form action="trends/" method="get" class="form-signin">
       <div class="text-center mb-4">
         <img class="mb-4 logo" src="./img/unnamed.jpg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Netflix & No Chill</h1>
@@ -26,10 +27,10 @@
       </div>
 
       <div class="form-label-group">
-        <input type="text" id="nameMovie" class="form-control" placeholder="Indiana Jones" required autofocus>
-        <label for="nameMovie">Indiana Jones</label>
+        <input type="text" id="title" name="title" class="form-control" placeholder="Indiana Jones" required autofocus>
+        <label for="title">Indiana Jones</label>
       </div>
-      <button class="btn btn-lg btn-block" type="submit">Rechercher</button>
+      <button class="btn btn-lg btn-block" type="submit" value="Rechercher">Rechercher</button>
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2020-2021</p>
     </form>
   </body>
