@@ -88,26 +88,28 @@ function getInformationsAboutTheCSP() {
 
 function getInformationsAboutTheMovie(movieName) {
     app.get("/movie/informations", cors(corsOptions), function (req, res) {
-            var url = "https://api.betaseries.com/movies/search?title=" + movieName;
-            fetch(url)
-                .then(res => res.json())
-                .then(json => {
-                    console.log("fetchair", json);
+        var url = "https://api.betaseries.com/movies/search?title=" + movieName;
+        fetch(url)
+            .then(res => res.json())
+            .then(json => {
+                console.log("fetchair", json);
 
-                    res.format({
-                        'text/html': function () {
-                            res.send("data fetched look your console");
-                        },
-                        'application/json': function () {
-                            res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
-                            res.set('Content-Type', 'application/json');
-                            res.json(json);
-                        }
-                    })
+                res.format({
+                    'text/html': function () {
+                        res.send("data fetched look your console");
+                    },
+                    'application/json': function () {
+                        res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
+                        res.set('Content-Type', 'application/json');
+                        res.json(json);
+                    }
                 })
-        }
-    }
+            })
+    })
+}
 
-    app.listen(port, function () {
-        console.log('Serveur listening on port ' + port);
-    });
+getInformationsAboutTheMovie("Avatar")
+
+app.listen(port, function () {
+    console.log('Serveur listening on port ' + port);
+});
