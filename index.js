@@ -11,6 +11,10 @@ var fs = require("fs");
 
 const googleTrends = require('google-trends-api');
 
+app.get("/", function(req, res){
+    res.send("coucou");
+})
+
 var cors = require('cors');
 var corsOptions = {
     origin: [
