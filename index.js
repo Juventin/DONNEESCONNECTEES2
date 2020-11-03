@@ -13,7 +13,7 @@ var fs = require("fs");
 const googleTrends = require('google-trends-api');
 var allocine = require('allocine-api');
 
-app.get("/", function(req, res){
+app.get("/", function (req, res) {
     res.send("coucou");
 })
 
@@ -30,11 +30,21 @@ var corsOptions = {
 /*
 function getAllocine(filmName) {
     var result;
+<<<<<<< HEAD
     allocine.api('search', {q: filmName, filter: 'movie'}, function(error, results) {
         if(error) { 
             //console.log('Error : '+ error);
             //return;
             res.send('Oh no there was an error', error);
+=======
+    allocine.api('search', {
+        q: filmName,
+        filter: 'movie'
+    }, function (error, results) {
+        if (error) {
+            console.log('Error : ' + error);
+            return;
+>>>>>>> 2d9a80f0d623e0858ca72bdd137b2413be888704
         }
         //console.log('Voici les données retournées par l\'API Allociné:');
         //console.log(results);
@@ -45,8 +55,12 @@ function getAllocine(filmName) {
 }
 
 app.get("/allocine", function (req, res) {
+<<<<<<< HEAD
         getAllocine("spiderman");
 
+=======
+    getAllocine("avatar");
+>>>>>>> 2d9a80f0d623e0858ca72bdd137b2413be888704
 });
 */
 app.get("/allocine", function (req, res) {
@@ -104,15 +118,29 @@ function getInformationsAboutTheCSP() {
     })
 }
 
-function getInformationsAboutTheMovie() {
-    var input = document.getElementById("name");
-    var result;
-    var url = "https://api.betaseries.com/movies/search?title=" + input.value;
-    fetch(url)
-        .then(res => res.text())
-        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-        .then(data => console.log(data))
+function getInformationsAboutTheMovie(movieName) {
+    app.get("/movie/informations", cors(corsOptions), function (req, res) {
+        var url = "https://api.betaseries.com/movies/search?title=" + movieName;
+        fetch(url)
+            .then(res => res.json())
+            .then(json => {
+                console.log("fetchair", json);
+
+                res.format({
+                    'text/html': function () {
+                        res.send("data fetched look your console");
+                    },
+                    'application/json': function () {
+                        res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
+                        res.set('Content-Type', 'application/json');
+                        res.json(json);
+                    }
+                })
+            })
+    })
 }
+
+getInformationsAboutTheMovie("Avatar")
 
 app.listen(port, function () {
     console.log('Serveur listening on port ' + port);
