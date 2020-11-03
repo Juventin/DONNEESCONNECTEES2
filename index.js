@@ -13,7 +13,7 @@ var fs = require("fs");
 const googleTrends = require('google-trends-api');
 var allocine = require('allocine-api');
 
-app.get("/", function(req, res){
+app.get("/", function (req, res) {
     res.send("coucou");
 })
 
@@ -30,9 +30,12 @@ var corsOptions = {
 
 function getAllocine(filmName) {
     var result;
-    allocine.api('search', {q: filmName, filter: 'movie'}, function(error, results) {
-        if(error) { 
-            console.log('Error : '+ error);
+    allocine.api('search', {
+        q: filmName,
+        filter: 'movie'
+    }, function (error, results) {
+        if (error) {
+            console.log('Error : ' + error);
             return;
         }
         console.log('Voici les données retournées par l\'API Allociné:');
@@ -43,7 +46,7 @@ function getAllocine(filmName) {
 }
 
 app.get("/allocine", function (req, res) {
-        getAllocine("avatar");
+    getAllocine("avatar");
 });
 //fin test gaelle
 
@@ -84,25 +87,27 @@ function getInformationsAboutTheCSP() {
 }
 
 function getInformationsAboutTheMovie(movieName) {
-    var url = "https://api.betaseries.com/movies/search?title=" + movieName;
-    fetch(url)
-        .then(res => res.json())
-        .then(json => {
-            console.log("fetchair", json);
+    app.get("/movie/informations", cors(corsOptions), function (req, res) {
+            var url = "https://api.betaseries.com/movies/search?title=" + movieName;
+            fetch(url)
+                .then(res => res.json())
+                .then(json => {
+                    console.log("fetchair", json);
 
-            res.format({
-                'text/html': function () {
-                    res.send("data fetched look your console");
-                },
-                'application/json': function () {
-                    res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
-                    res.set('Content-Type', 'application/json');
-                    res.json(json);
-                }
-            })
-        })
-}
+                    res.format({
+                        'text/html': function () {
+                            res.send("data fetched look your console");
+                        },
+                        'application/json': function () {
+                            res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
+                            res.set('Content-Type', 'application/json');
+                            res.json(json);
+                        }
+                    })
+                })
+        }
+    }
 
-app.listen(port, function () {
-    console.log('Serveur listening on port ' + port);
-});
+    app.listen(port, function () {
+        console.log('Serveur listening on port ' + port);
+    });
