@@ -40,3 +40,5 @@ Sources de données :
 
 
 ## Jointure des données
+Les données sont liées à l'aide d'une fonction javascript permettant de joindre deux listes sur une valeur commune (les champs utilisés comme clé peuvent être nommés différemment).
+Pour chaque région dont on dispose le taux de chômage, on joint la popularité du film sur Google trends.
