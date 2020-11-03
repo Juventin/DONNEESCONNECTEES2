@@ -79,7 +79,16 @@ app.get("/trends", function(req, res){
         var merged = mergeData(regions, 'Libelle', trends, 'geoName')
 
         // On le renvoie
-        res.send(merged)
+        res.format({
+            'text/html': function () {
+                console.log(merged)
+                res.send("data fetched look your console");
+            },
+            'application/json': function () {
+                res.set('Content-Type', 'application/json');
+                res.json(merged);
+            }
+        })
     })
 })
 
