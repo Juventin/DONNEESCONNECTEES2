@@ -86,9 +86,9 @@ function getInformationsAboutTheCSP() {
     })
 }
 
-function getInformationsAboutTheMovie(movieName) {
+function getInformationsAboutTheMovie(movieName, app) {
     app.get("/movie/informations", cors(corsOptions), function (req, res) {
-        var url = "https://api.betaseries.com/movies/search?title=" + movieName;
+        var url = "https://api.betaseries.com/movies/search?key=c3796994ef78&title=" + movieName;
         fetch(url)
             .then(res => res.json())
             .then(json => {
@@ -108,7 +108,7 @@ function getInformationsAboutTheMovie(movieName) {
     })
 }
 
-getInformationsAboutTheMovie("Avatar")
+getInformationsAboutTheMovie("Avatar", app)
 
 app.listen(port, function () {
     console.log('Serveur listening on port ' + port);
