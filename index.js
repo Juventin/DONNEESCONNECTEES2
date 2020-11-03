@@ -27,9 +27,14 @@ var corsOptions = {
 }
 
 //Gaelle test
-
+/*
 function getAllocine(filmName) {
     var result;
+    allocine.api('search', {q: filmName, filter: 'movie'}, function(error, results) {
+        if(error) { 
+            //console.log('Error : '+ error);
+            //return;
+            res.send('Oh no there was an error', error);
     allocine.api('search', {
         q: filmName,
         filter: 'movie'
@@ -38,16 +43,37 @@ function getAllocine(filmName) {
             console.log('Error : ' + error);
             return;
         }
-        console.log('Voici les données retournées par l\'API Allociné:');
-        console.log(results);
+        //console.log('Voici les données retournées par l\'API Allociné:');
+        //console.log(results);
+        res.send(results);
     });
 
 
 }
 
 app.get("/allocine", function (req, res) {
-    getAllocine("avatar");
+    getAllocine("spiderman");
 });
+*/
+//source : https://www.npmjs.com/package/allocine-api
+
+app.get("/allocine", function (req, res) {
+    allocine.api('search', {
+        q: 'spiderman', 
+        filter: 'movie'
+    })
+    .then(function (results) {
+        res.send(results);
+    })
+    .catch(function (err) {
+        res.send('Oh no there was an error', err);
+    });
+})
+
+
+
+
+
 //fin test gaelle
 
 function getTrendsPerRegion() {
