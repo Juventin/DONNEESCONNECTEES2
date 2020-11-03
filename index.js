@@ -139,3 +139,29 @@ getInformationsAboutTheMovie("Avatar", app)
 app.listen(port, function () {
     console.log('Serveur listening on port ' + port);
 });
+
+/////////////////////SARAH
+
+Function getInformationsMétéo() {
+	//app.get("?", cors(corsOptions), function (req, res) {      à rajouter 
+		var input = [{key:28, lat:"49.524641", lng:"0.882833"},{key:94, lat:"42.039604", lng:"9.012893"},{key:93, lat:"44.9351691", lng:"6.0679194"},{key:84, lat:"45.1695797", lng:"5.4502821"},{key:76, lat:"43.5912356", lng:"3.2583626"},{key:75, lat:"47.7632836", lng:"-0.3299687"},{key:53, lat:"48.2020471", lng:"-2.9326435"},{key:52, lat:"44.7002222", lng:"-0.2995785"},{key:24, lat:"47.7515", lng:"1.675"},{key:11, lat:"48.8499198", lng:"2.6370411"},{key:32, lat:"50.5732769", lng:"2.3244679"},{key:27, lat:"47.1343207", lng:"6.0223016"}];
+
+		var result = '';
+		var df = new Array;
+		for(var i = 0; i < input.length; i++){
+		var lat = input[i].lat;
+		var lng = input[i].lng;
+		var key = input[i].key;
+			fetch('https://www.prevision-meteo.ch/services/json/lat='+lat+'lng='+lng)
+	  		.then(function(response) {
+	   	 	response.json()
+				.then(function(data) {
+		   	 	result=data;
+           	 	result.code=key;
+            		df.push(result);
+           	 	console.log(df);
+            
+		})})    
+		}
+	//})   à rajouter 
+}
