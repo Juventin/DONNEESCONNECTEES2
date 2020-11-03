@@ -27,7 +27,7 @@ var corsOptions = {
 }
 
 //Gaelle test
-
+/*
 function getAllocine(filmName) {
     var result;
     allocine.api('search', {q: filmName, filter: 'movie'}, function(error, results) {
@@ -46,7 +46,23 @@ function getAllocine(filmName) {
 
 app.get("/allocine", function (req, res) {
         getAllocine("spiderman");
+
 });
+*/
+app.get("/allocine", function (req, res) {
+    allocine.api('search', {q: 'spiderman', filter: 'movie'})
+        .then(function (results) {
+            res.send(results);
+        })
+        .catch(function (err) {
+            res.send('Oh no there was an error', err);
+        });
+})
+
+
+
+
+
 //fin test gaelle
 
 function getTrendsPerRegion() {
