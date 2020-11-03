@@ -27,6 +27,25 @@ var corsOptions = {
 app.use(express.static('docs'));
 
 
+//TRAVAIL GAELLE TEST
+
+//retourne les departements en focntion du code region
+
+app.get("/departement", function (req, res) {
+    console.log('REUSSI COMMUNE')
+    let url = "https://geo.api.gouv.fr/regions/11/departements?fields=code";
+    console.log('on y va')
+    fetch(url)
+       .then(res => res.json())
+       .then(data => console.log(data))
+})
+
+
+
+
+
+//FIN
+
 // app.get("/:name", function(req, res){
 //     res.send("hello : " + req.params.name );
 // })
