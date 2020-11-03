@@ -50,7 +50,10 @@ app.get("/allocine", function (req, res) {
 });
 */
 app.get("/allocine", function (req, res) {
-    allocine.api('search', {q: 'spiderman', filter: 'movie'})
+    allocine.api('search', {
+        q: 'spiderman', 
+        filter: 'movie'
+    })
         .then(function (results) {
             res.send(results);
         })
