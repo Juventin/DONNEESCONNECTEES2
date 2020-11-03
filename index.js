@@ -58,14 +58,24 @@ function getInformationsAboutTheCSP() {
     })
 }
 
-function getInformationsAboutTheMovie() {
-    var input = document.getElementById("name");
-    var result;
-    var url = "https://api.betaseries.com/movies/search?title=" + input.value;
+function getInformationsAboutTheMovie(movieName) {
+    var url = "https://api.betaseries.com/movies/search?title=" + movieName;
     fetch(url)
-        .then(res => res.text())
-        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-        .then(data => console.log(data))
+        .then(res => res.json())
+        .then(json => {
+            console.log("fetchair", json);
+
+            res.format({
+                'text/html': function () {
+                    res.send("data fetched look your console");
+                },
+                'application/json': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
+                    res.set('Content-Type', 'application/json');
+                    res.json(json);
+                }
+            })
+        })
 }
 
 app.listen(port, function () {
