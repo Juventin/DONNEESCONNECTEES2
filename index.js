@@ -150,6 +150,7 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
             var merged2 = mergeData(merged, 'Libelle', trends, 'geoName');
             // On joint merged avec film
             var merged3 = mergeDataNoJointure(films.movies, merged2);
+            // merged3 = cleanData(merged3, 'trends')
 
 
             /*// On jointe les deux sur Libelle == geoName
@@ -194,6 +195,8 @@ app.get("/movies", cors(corsOptions), async function (req, res) {
         .then(res => res.json())
         .then(json => {
             films = json;
+            films = cleanData(films['movies'], 'films')
+
             res.format({
                 /*'text/html': function () {
                     console.log(merged3)
@@ -264,6 +267,7 @@ app.get("/region", cors(corsOptions), async function (req, res) {
 
         })
 })
+
 app.listen(port, function () {
     console.log('Serveur listening on port ' + port);
 });
