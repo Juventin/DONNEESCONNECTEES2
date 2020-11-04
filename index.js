@@ -190,6 +190,55 @@ app.get("/movies", cors(corsOptions), async function (req, res) {
 
 
 })
+
+app.get("/region", cors(corsOptions), async function (req, res) {
+
+    // On récupère régions
+    var regions = getRegions();
+
+    // On récupère le film demandé
+    var region = req.param("title");
+
+    function checkRegion(regioncheck) {
+        return regioncheck.Libelle = region;
+    }
+    var indexRegion = regions.findIndex(checkRegion)
+
+
+    // On récupère les données météo
+    var result = '';
+    var meteo = new Array();
+    var lat = regions[indexRegion].lat;
+    var lng = regions[indexRegion].lng;
+    var key = regions[indexRegion].Code;
+    await fetch('https://www.prevision-meteo.ch/services/json/lat=' + lat + 'lng=' + lng, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            var meteo = json;
+
+
+            // On jointe les deux merged sur code == Code
+            var merged = mergeData(regions, "Code", meteo, "code");
+
+            // On le renvoie
+            res.format({
+                /*'text/html': function () {
+                    console.log(merged3)
+                    res.send("data fetched look your console");
+                },*/
+                'application/json': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
+                    res.set('Content-Type', 'application/json');
+                    res.json(merged);
+                }
+            })
+
+        })
+})
 app.listen(port, function () {
     console.log('Serveur listening on port ' + port);
 });
