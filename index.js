@@ -104,42 +104,43 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
             })
     }
 
+    var yesterday = new Date(new Date().setDate(new Date().getDate()-3))
 
     // On récupère les données google trends
     // Et on fait notre fusion de données avec ces données
     googleTrends.interestByRegion({
-            keyword: movie,
-            geo: "FR",
-            resolution: "REGION"
-        })
-        .then(res => JSON.parse(res))
-        .then(json => {
-            //console.log(result);
+        keyword: movie,
+        geo: "FR",
+        resolution: "REGION",
+        startTime: yesterday
+    })
+    .then(res => JSON.parse(res))
+    .then(json => {
+        //console.log(result);
 
-            // Ok pour trends
-            var trends = json['default']['geoMapData']
+        // Ok pour trends
+        var trends = json['default']['geoMapData']
 
-            // On jointe les deux sur Libelle == geoName
-            var merged = mergeData(regions, 'Libelle', trends, 'geoName')
+        // On jointe les deux sur Libelle == geoName
+        var merged = mergeData(regions, 'Libelle', trends, 'geoName')
 
-            // On joint merged avec film
-            var merged2 = mergeDataNoJointure(merged, films);
+        // On joint merged avec film
+        var merged2 = mergeDataNoJointure(merged, films);
 
-            // On jointe les deux merged sur code == Code
-            var merged3 = mergeData(merged2, "Code", meteo, "code");
+        // On jointe les deux merged sur code == Code
+        var merged3 = mergeData(merged2, "Code", meteo, "code");
 
-            // On le renvoie
-            res.format({
-                /*'text/html': function () {
-                    console.log(merged3)
-                    res.send("data fetched look your console");
-                },*/
-                'application/json': function () {
-                    res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
-                    res.set('Content-Type', 'application/json');
-                    res.json(merged3);
-                }
-            })
+        // On le renvoie
+        res.format({
+            /*'text/html': function () {
+                console.log(merged3)
+                res.send("data fetched look your console");
+            },*/
+            'application/json': function () {
+                res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
+                res.set('Content-Type', 'application/json');
+                res.json(merged3);
+            }
         })
 })
 
