@@ -2,6 +2,8 @@
 
 **lien vers le service déployé : https://netflixbutnochill.herokuapp.com/**
 
+**lien vers la présentation : https://docs.google.com/presentation/d/1fCM2Ldpqu3CH53UTrz0MDr0l8LxQL9NJo8QfuZu9_0s/edit?usp=sharing**
+
 
 ## Présentation du groupe
 Le goupe est composé de :
@@ -26,9 +28,12 @@ Son objectif est de metre à disposition des données permettant l'analyse de co
 Les données peuvent être consultées depuis l'interface utilisateur, avec un formulaire en page d'accueil, ou en renseignant directement le titre du film dans l'adresse URL.
 
 ## Routes
-GET /trends renvoie la popularité sur Google du film choisi pour chaque région
-GET /movies renvoie les informations relatives à un film choisi
-GET /region renvoie le taux de chômage ainsi que la météo pour la région choisie
+  - **GET /trends** :renvoie la popularité sur Google du film choisi pour chaque région.
+  - **GET /movies** :renvoie les informations relatives à un film choisi.
+  - **GET /region** :renvoie le taux de chômage ainsi que la météo pour la région choisie.
+
+Contraintes: 
+  - Tous les parametres placés en URL sont encodés. 
 
 ## Choix des données et méthodes de récupération
 Sources de données :
