@@ -25,6 +25,11 @@ Son objectif est de metre à disposition des données permettant l'analyse de co
 
 Les données peuvent être consultées depuis l'interface utilisateur, avec un formulaire en page d'accueil, ou en renseignant directement le titre du film dans l'adresse URL.
 
+## Routes
+GET /trends renvoie la popularité sur Google du film choisi pour chaque région
+GET /movies renvoie les informations relatives à un film choisi
+GET /region renvoie le taux de chômage ainsi que la météo pour la région choisie
+
 ## Choix des données et méthodes de récupération
 Sources de données :
 - API **BetaSeries**:
@@ -53,8 +58,3 @@ L'objectif de ces liaisons va etre de ne créer qu'une seule table qui repertori
 
 Détail du travail réalisé pour adapter les champs de jointure: 
  - La longitude et la latitude a du être ajouté sur **INSEE** de manière manuelle afin de faire la liaison avec les données **Méteo**.L'objectif serait d'automatisé la récupération de ces données. 
-
-Contraintes des liaisons: 
-  - Les données des films issues de **BetaSeries** sont dupliquée pour toutes les régions.  
-
-  
