@@ -108,13 +108,15 @@ app.get("/trends", cors(corsOptions), async function(req, res){
         })    
     }
 
+    var yesterday = new Date(new Date().setDate(new Date().getDate()-3))
 
     // On récupère les données google trends
     // Et on fait notre fusion de données avec ces données
     googleTrends.interestByRegion({
         keyword: movie,
         geo: "FR",
-        resolution: "REGION"
+        resolution: "REGION",
+        startTime: yesterday
     })
     .then(res => JSON.parse(res))
     .then(json => {
