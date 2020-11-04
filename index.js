@@ -145,9 +145,6 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
             // On jointe les deux merged sur code == Code
             var merged3 = mergeData(merged2, "Code", meteo, "code");
 
-            merged3 = cleanData(merged3, 'region')
-            console.log(merged3)
-
             // On le renvoie
             res.format({
                 /*'text/html': function () {
@@ -230,6 +227,7 @@ app.get("/region", cors(corsOptions), async function (req, res) {
 
             // On jointe les deux merged sur code == Code
             var merged = mergeData(regions, "Code", meteo, "code");
+            merged = cleanData(merged, 'region')
 
             // On le renvoie
             res.format({
