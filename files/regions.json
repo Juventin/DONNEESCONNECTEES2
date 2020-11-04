@@ -1,6 +1,7 @@
 [
     {
         "Code": 11,
+        "Libellelow": "île-de-france",
         "Libelle": "Île-de-France",
         "T2_2020": "6,3",
         "lat": "48.8499198",
@@ -8,6 +9,7 @@
   },
     {
         "Code": 24,
+        "Libellelow": "centre-val de loire",
         "Libelle": "Centre-Val de Loire",
         "T2_2020": "6,8",
         "lat": "47.7515",
@@ -15,6 +17,7 @@
   },
     {
         "Code": 27,
+        "Libellelow": "franche-comté",
         "Libelle": "Franche-Comté",
         "T2_2020": "6,4",
         "lat": "47.1343207",
@@ -22,6 +25,7 @@
   },
     {
         "Code": 28,
+        "Libellelow": "haute normandée",
         "Libelle": "Upper Normandy",
         "T2_2020": "7,3",
         "lat": "49.524641",
@@ -29,6 +33,7 @@
   },
     {
         "Code": 32,
+        "Libellelow": "nord-pas-de-calais",
         "Libelle": "Nord-Pas-de-Calais",
         "T2_2020": "8,6",
         "lat": "48.5833",
@@ -36,6 +41,7 @@
   },
     {
         "Code": 44,
+        "Libellelow": "alsace",
         "Libelle": "Alsace",
         "T2_2020": "6,9",
         "lat": "50.5732769",
@@ -43,6 +49,7 @@
   },
     {
         "Code": 52,
+        "Libellelow": "aquitaine",
         "Libelle": "Aquitaine",
         "T2_2020": "6,6",
         "lat": "44.7002222",
@@ -50,6 +57,7 @@
   },
     {
         "Code": 53,
+        "Libellelow": "bretagne",
         "Libelle": "Brittany",
         "T2_2020": "6,3",
         "lat": "48.2020471",
@@ -57,6 +65,7 @@
   },
     {
         "Code": 75,
+        "Libellelow": "pays de la loire",
         "Libelle": "Pays de la Loire",
         "T2_2020": "6,8",
         "lat": "47.7632836",
@@ -64,6 +73,7 @@
   },
     {
         "Code": 76,
+        "Libellelow": "languedoc-roussillon",
         "Libelle": "Languedoc-Roussillon",
         "T2_2020": "8,4",
         "lat": "43.5912356",
@@ -71,6 +81,7 @@
   },
     {
         "Code": 84,
+        "Libellelow": "rhone-alpes",
         "Libelle": "Rhone-Alpes",
         "T2_2020": "6,4",
         "lat": "45.1695797",
@@ -78,6 +89,7 @@
   },
     {
         "Code": 93,
+        "Libellelow": "provence-alpes-côtes d'azur",
         "Libelle": "Provence-Alpes-Côte d'Azur",
         "T2_2020": "8,3",
         "lat": "44.9351691",
@@ -85,6 +97,7 @@
   },
     {
         "Code": 94,
+        "Libellelow": "corsica",
         "Libelle": "Corsica",
         "T2_2020": "7,6",
         "lat": "42.039604",

@@ -99,9 +99,9 @@ app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
 
 
     // On récupère le film demandé
-    var region = decodeURI(req.params.region);
+    var region = decodeURI(req.params.region.toLowerCase());
     function checkRegion(regioncheck) {
-        return regioncheck.Libelle == region;
+        return regioncheck.Libellelow == region;
     }
     var indexRegion = regions.findIndex(checkRegion);
     console.log(indexRegion);
@@ -219,10 +219,10 @@ app.get("/region/:region", cors(corsOptions), async function (req, res) {
     var regions = getRegions();
 
     // On récupère le film demandé
-    var region = decodeURI(req.params.region);
+    var region = decodeURI(req.params.region.toLowerCase());
 
     function checkRegion(regioncheck) {
-        return regioncheck.Libelle == region;
+        return regioncheck.Libellelow == region;
     }
     var indexRegion = regions.findIndex(checkRegion);
     console.log(indexRegion);
