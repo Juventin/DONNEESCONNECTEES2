@@ -30,6 +30,7 @@ Les données peuvent être consultées depuis l'interface utilisateur, avec un f
 ## Routes
 GET /trends renvoie la popularité sur Google du film choisi pour chaque région
 GET /movies renvoie les informations relatives à un film choisi
+
 GET /region renvoie le taux de chômage ainsi que la météo pour la région choisie
 
 ## Choix des données et méthodes de récupération
