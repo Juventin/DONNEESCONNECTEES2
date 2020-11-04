@@ -2,7 +2,7 @@
 
 **lien vers le service déployé : https://netflixbutnochill.herokuapp.com/**
 
-**lien vers la présentation : https://docs.google.com/presentation/d/1fCM2Ldpqu3CH53UTrz0MDr0l8LxQL9NJo8QfuZu9_0s/edit?usp=sharing **
+**lien vers la présentation : https://docs.google.com/presentation/d/1fCM2Ldpqu3CH53UTrz0MDr0l8LxQL9NJo8QfuZu9_0s/edit?usp=sharing**
 
 
 ## Présentation du groupe
