@@ -1,17 +1,4 @@
 
-<table>
-    <tr>
-        <td>
-            <img alt="test" src="https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/logo.PNG">
-        </td>
-        <td>
-            <h1>Netflix but moyen chill</h1>
-        </td>
-    </tr>
-    
-</table>
-
-
 # Netflix but moyen chill
 
 
