@@ -92,7 +92,7 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
     for (var i = 0; i < regions.length; i++) {
         var lat = regions[i].lat;
         var lng = regions[i].lng;
-        var key = regions[i].key;
+        var key = regions[i].Code;
         await fetch('https://www.prevision-meteo.ch/services/json/lat=' + lat + 'lng=' + lng)
             .then(function (response) {
                 response.json()
