@@ -9,6 +9,7 @@ var fetch = require('node-fetch');
 var https = require('https');
 var fs = require("fs");
 var path = require('path');
+import { cleanData } from 'cleanData';
 
 const googleTrends = require('google-trends-api');
 
@@ -29,6 +30,9 @@ app.use(express.static('docs'));
 // app.get("/:name", function(req, res){
 //     res.send("hello : " + req.params.name );
 // })
+
+
+
 
 function getRegions() {
 
@@ -132,6 +136,9 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
 
             // On jointe les deux merged sur code == Code
             var merged3 = mergeData(merged2, "Code", meteo, "code");
+
+            merged3 = cleanData(merged3, 'region')
+            console.log(merged3)
 
             // On le renvoie
             res.format({
