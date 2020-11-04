@@ -1,5 +1,9 @@
 'use strict'
 
+import { cleanData } from './cleanData.js';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 var express = require('express');
 var app = express();
 
@@ -9,7 +13,6 @@ var fetch = require('node-fetch');
 var https = require('https');
 var fs = require("fs");
 var path = require('path');
-import { cleanData } from 'cleanData';
 
 const googleTrends = require('google-trends-api');
 
