@@ -174,6 +174,17 @@ app.get("/movies", cors(corsOptions), async function (req, res) {
         .then(res => res.json())
         .then(json => {
             films = json;
+            res.format({
+                /*'text/html': function () {
+                    console.log(merged3)
+                    res.send("data fetched look your console");
+                },*/
+                'application/json': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
+                    res.set('Content-Type', 'application/json');
+                    res.json(merged3);
+                }
+            })
         })
 
 
