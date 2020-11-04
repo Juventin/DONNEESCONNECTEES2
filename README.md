@@ -1,5 +1,8 @@
 # Netflix but moyen chill
 
+
+![Netflix test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/logo.PNG)
+
 **lien vers le service déployé : https://netflixbutnochill.herokuapp.com/**
 
 **lien vers la présentation : https://docs.google.com/presentation/d/1fCM2Ldpqu3CH53UTrz0MDr0l8LxQL9NJo8QfuZu9_0s/edit?usp=sharing**
