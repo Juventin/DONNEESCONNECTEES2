@@ -150,6 +150,7 @@ app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
             // On joint merged avec film
             var merged3 = mergeDataNoJointure(films.movies, merged2);
             merged3 = cleanData(merged3, 'trends')
+            console.log(merged3)
 
 
             /*// On jointe les deux sur Libelle == geoName
