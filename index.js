@@ -75,13 +75,13 @@ function mergeDataNoJointure(arr1, arr2) {
 }
 
 
-app.get("/trends", cors(corsOptions), async function (req, res) {
+app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
 
     // On récupère régions
     var regions = getRegions();
 
     // On récupère le film demandé
-    var movie = req.param("title");
+    var movie = decodeURI(req.params.movie);
     console.log(movie)
 
     // On récupère les données du film demandé
@@ -99,7 +99,7 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
 
 
     // On récupère le film demandé
-    var region = req.param("region");
+    var region = decodeURI(req.params.region);
     function checkRegion(regioncheck) {
         return regioncheck.Libelle == region;
     }
@@ -178,9 +178,9 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
 })
 
 
-app.get("/movie", cors(corsOptions), async function (req, res) {
+app.get("/movie/:movie", cors(corsOptions), async function (req, res) {
 
-    var movie = req.param("title");
+    var movie = decodeURI(req.params.movie);
     // On récupère les données du film demandé
     var films;
     var url = "https://api.betaseries.com/movies/search?key=c3796994ef78&title=" + movie;
@@ -213,13 +213,13 @@ app.get("/movie", cors(corsOptions), async function (req, res) {
 
 })
 
-app.get("/region", cors(corsOptions), async function (req, res) {
+app.get("/region/:region", cors(corsOptions), async function (req, res) {
 
     // On récupère régions
     var regions = getRegions();
 
     // On récupère le film demandé
-    var region = req.param("region");
+    var region = decodeURI(req.params.region);
 
     function checkRegion(regioncheck) {
         return regioncheck.Libelle == region;
