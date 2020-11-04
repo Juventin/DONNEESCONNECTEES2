@@ -89,7 +89,7 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
     // On récupère les données météo
     var result = '';
     var meteo = new Array();
-    for (var i = 0; i < input.length; i++) {
+    for (var i = 0; i < regions.length; i++) {
         var lat = regions[i].lat;
         var lng = regions[i].lng;
         var key = regions[i].key;
