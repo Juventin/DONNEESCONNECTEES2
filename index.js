@@ -150,7 +150,7 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
             var merged2 = mergeData(merged, 'Libelle', trends, 'geoName');
             // On joint merged avec film
             var merged3 = mergeDataNoJointure(films.movies, merged2);
-            // merged3 = cleanData(merged3, 'trends')
+            merged3 = cleanData(merged3, 'trends')
 
 
             /*// On jointe les deux sur Libelle == geoName
