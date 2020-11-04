@@ -8,6 +8,21 @@
 **lien vers la présentation : https://docs.google.com/presentation/d/1fCM2Ldpqu3CH53UTrz0MDr0l8LxQL9NJo8QfuZu9_0s/edit?usp=sharing**
 
 
+<table>
+    <tr>
+        <th>test</th>
+    </tr>
+    <tr>
+        <td>
+            <img alt="test" src="https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/logo.PNG">
+        </td>
+    </tr>
+    <tr>
+        <td>test</td>
+    </tr>
+</table>
+
+
 ## Présentation du groupe
 Le goupe est composé de :
 - Mathéo DALY (matheodaly.md@gmail.com)
