@@ -86,7 +86,11 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
     var url = "https://api.betaseries.com/movies/search?key=c3796994ef78&title=" + movie;
 
 
-    await fetch(url, {headers: {'Content-Type': 'application/json'}})
+    await fetch(url, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         .then(res => res.json())
         .then(json => {
             films = json;
@@ -100,7 +104,11 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
         var lat = regions[i].lat;
         var lng = regions[i].lng;
         var key = regions[i].Code;
-        await fetch('https://www.prevision-meteo.ch/services/json/lat=' + lat + 'lng=' + lng, {headers: {'Content-Type': 'application/json'}})
+        await fetch('https://www.prevision-meteo.ch/services/json/lat=' + lat + 'lng=' + lng, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
             .then(function (response) {
                 response.json()
                     .then(function (data) {
@@ -156,6 +164,88 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
 
 })
 
+
+app.get("/movies", cors(corsOptions), async function (req, res) {
+
+    var movie = req.param("title");
+    // On récupère les données du film demandé
+    var films;
+    var url = "https://api.betaseries.com/movies/search?key=c3796994ef78&title=" + movie;
+
+
+    await fetch(url, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            films = json;
+            res.format({
+                /*'text/html': function () {
+                    console.log(merged3)
+                    res.send("data fetched look your console");
+                },*/
+                'application/json': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
+                    res.set('Content-Type', 'application/json');
+                    res.json(films);
+                }
+            })
+        })
+
+
+
+})
+
+app.get("/region", cors(corsOptions), async function (req, res) {
+
+    // On récupère régions
+    var regions = getRegions();
+
+    // On récupère le film demandé
+    var region = req.param("title");
+
+    function checkRegion(regioncheck) {
+        return regioncheck.Libelle = region;
+    }
+    var indexRegion = regions.findIndex(checkRegion)
+
+
+    // On récupère les données météo
+    var result = '';
+    var meteo = new Array();
+    var lat = regions[indexRegion].lat;
+    var lng = regions[indexRegion].lng;
+    var key = regions[indexRegion].Code;
+    await fetch('https://www.prevision-meteo.ch/services/json/lat=' + lat + 'lng=' + lng, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            var meteo = json;
+
+
+            // On jointe les deux merged sur code == Code
+            var merged = mergeData(regions, "Code", meteo, "code");
+
+            // On le renvoie
+            res.format({
+                /*'text/html': function () {
+                    console.log(merged3)
+                    res.send("data fetched look your console");
+                },*/
+                'application/json': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
+                    res.set('Content-Type', 'application/json');
+                    res.json(merged);
+                }
+            })
+
+        })
+})
 app.listen(port, function () {
     console.log('Serveur listening on port ' + port);
 });
