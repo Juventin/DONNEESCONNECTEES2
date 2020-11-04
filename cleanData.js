@@ -1,5 +1,4 @@
 function cleanData(data, type) {
-    console.log(data)
     console.log('Cleaning')
     let data2 = []
 
@@ -51,8 +50,8 @@ function cleanData(data, type) {
 
     if (type == 'trends') {
         data2 = data[0][0]
-        // data2.Value = data2.value[0]
-        // delete data2['value']
+        data2.Value = data2.value[0]
+        delete data2['value']
         delete data2['geoCode']
         delete data2['geoName']
         delete data2['formattedValue']
@@ -72,7 +71,6 @@ function cleanData(data, type) {
             data2.Films.push(row);
         }
 
-        console.log(data2)
     }
     return data2
 }
