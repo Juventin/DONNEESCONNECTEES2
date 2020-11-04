@@ -178,7 +178,7 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
 })
 
 
-app.get("/movies", cors(corsOptions), async function (req, res) {
+app.get("/movie", cors(corsOptions), async function (req, res) {
 
     var movie = req.param("title");
     // On récupère les données du film demandé
