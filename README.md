@@ -5,7 +5,7 @@
             <img alt="test" src="https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/logo.PNG">
         </td>
         <td>
-            # Netflix but moyen chill
+            <h1>Netflix but moyen chill</h1>
         </td>
     </tr>
     
