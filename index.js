@@ -160,7 +160,7 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
 
 app.get("/movies", cors(corsOptions), async function (req, res) {
 
-
+    var movie = req.param("title");
     // On récupère les données du film demandé
     var films;
     var url = "https://api.betaseries.com/movies/search?key=c3796994ef78&title=" + movie;
@@ -182,7 +182,7 @@ app.get("/movies", cors(corsOptions), async function (req, res) {
                 'application/json': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
                     res.set('Content-Type', 'application/json');
-                    res.json(merged3);
+                    res.json(films);
                 }
             })
         })
