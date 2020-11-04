@@ -82,7 +82,11 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
     var url = "https://api.betaseries.com/movies/search?key=c3796994ef78&title=" + movie;
 
 
-    await fetch(url, {headers: {'Content-Type': 'application/json'}})
+    await fetch(url, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         .then(res => res.json())
         .then(json => {
             films = json;
@@ -96,7 +100,11 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
         var lat = regions[i].lat;
         var lng = regions[i].lng;
         var key = regions[i].Code;
-        await fetch('https://www.prevision-meteo.ch/services/json/lat=' + lat + 'lng=' + lng, {headers: {'Content-Type': 'application/json'}})
+        await fetch('https://www.prevision-meteo.ch/services/json/lat=' + lat + 'lng=' + lng, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
             .then(function (response) {
                 response.json()
                     .then(function (data) {
@@ -149,6 +157,28 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
 
 })
 
+
+app.get("/movies", cors(corsOptions), async function (req, res) {
+
+
+    // On récupère les données du film demandé
+    var films;
+    var url = "https://api.betaseries.com/movies/search?key=c3796994ef78&title=" + movie;
+
+
+    await fetch(url, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            films = json;
+        })
+
+
+
+})
 app.listen(port, function () {
     console.log('Serveur listening on port ' + port);
 });
