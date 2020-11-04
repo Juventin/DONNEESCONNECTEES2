@@ -3,6 +3,15 @@ function cleanData(data, type) {
     console.log('Cleaning')
     let data2 = []
 
+    if (type == 'trend') {
+        for (let i = 0; i < data.length; i++) {
+            let row = {}
+            row.Popularité = data[i]['value'][0]
+            row.geoName = data[i]['geoName']
+            data2.push(row);
+        }
+    }
+
     if (type == 'region') {
         for (let i = 0; i < data.length; i++) {
             let row = {}
@@ -41,24 +50,17 @@ function cleanData(data, type) {
     }
 
     if (type == 'trends') {
-        data2 = {}
-        data2.Code_region = data[0][0]['Code']
-        data2.Region = data[0][0]['Libelle']
-        data2.Date = data[0][0]['Date']
-        data2.Hour = data[0][0]['Hour']
-        data2.Taux_chomage = data[0][0]['Taux_chomage']
-        data2.Meteo = {}
-        data2.Meteo.Temperature = data[0][0]['Temperature']
-        data2.Meteo.Wind_speed = data[0][0]['Wind_speed']
-        data2.Meteo.Wind_direction = data[0][0]['Wind_direction']
-        data2.Meteo.pressure = data[0][0]['pressure']
-        data2.Meteo.humidity = data[0][0]['humidity']
-        data2.Meteo.condition_climatique = data[0][0]['condition_climatique']
-        data2.Popularite = data[0][0]['value'][0]
+        data2 = data[0][0]
+        data2.Value = data2.value[0]
+        delete data2['value']
+        delete data2['geoCode']
+        delete data2['geoName']
+        delete data2['formattedValue']
+        delete data2['maxValueIndex']
+        delete data2['hasData']
         data2.Films = []
         for (let i = 0; i < data.length; i++) {
             let row = {}
-            row.Id = data[i]['id']
             row.Title = data[i]['title']
             row.Original_title = data[i]['original_title']
             row.Production_year = data[i]['production_year']
@@ -69,6 +71,8 @@ function cleanData(data, type) {
             row.Original_language = data[i]['language']
             data2.Films.push(row);
         }
+
+        console.log(data2)
     }
     return data2
 }

@@ -142,7 +142,7 @@ app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
             var trends = json['default']['geoMapData'];
 
             // On jointe les deux merged sur code == Code
-            var merged = mergeData(meteo_arr, "code",regions, "Code");
+            var merged = mergeData(meteo_arr, "code", regions, "Code");
             merged = cleanData(merged, 'region')
             
             // On jointe les deux sur Libelle == geoName
@@ -150,7 +150,6 @@ app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
             // On joint merged avec film
             var merged3 = mergeDataNoJointure(films.movies, merged2);
             merged3 = cleanData(merged3, 'trends')
-            console.log(merged3)
 
 
             /*// On jointe les deux sur Libelle == geoName
