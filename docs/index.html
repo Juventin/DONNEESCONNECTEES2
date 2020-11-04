@@ -34,7 +34,7 @@
           document.getElementById('title').parentNode.style.display = "none"
           document.getElementById('region').required = true;
           document.getElementById('region').parentNode.style.display = "block"
-        }else if(e == "movies"){
+        }else if(e == "movie"){
           document.getElementById('title').required = true;
           document.getElementById('title').parentNode.style.display = "block"
           document.getElementById('region').required = false;
@@ -46,24 +46,34 @@
           document.getElementById('region').parentNode.style.display = "block"
         }
       }  
+
+      function fnFetch(){
+        if(document.getElementById('select').value == "region"){
+          document.getElementById('form').action = document.getElementById('select').value+"/"+document.getElementById('region').value;
+        }else if(document.getElementById('select').value == "movie"){
+          document.getElementById('form').action = document.getElementById('select').value+"/"+document.getElementById('title').value;
+        }else{
+          document.getElementById('form').action = document.getElementById('select').value+"/"+document.getElementById('title').value+"/"+document.getElementById('region').value;
+        }
+      }
     </script>
 
     <select id="select" class="custom-select form-label-group" onchange="changeForm(this.value);">
-      <option value="movies">Je veux les informations relatives à un FILM</option>
+      <option value="movie">Je veux les informations relatives à un FILM</option>
       <option value="region">Je veux la météo et le taux de chômage sur la REGION</option>
       <option value="trends" selected>Je veux la tendance d'un FILM pour une REGION</option>
     </select>
 
       <div class="form-label-group">
-        <input type="text" id="title" name="title" class="form-control" placeholder="Indiana Jones" required>
+        <input type="text" id="title" class="form-control" placeholder="Indiana Jones" required>
         <label for="title">Film</label>
       </div>
 
       <div class="form-label-group">
-        <input type="text" id="region" name="region" class="form-control" placeholder="Île-de-France" required>
+        <input type="text" id="region" class="form-control" placeholder="Île-de-France" required>
         <label for="region">Région</label>
       </div>
-      <button class="btn btn-lg btn-block" type="submit" value="Rechercher">Rechercher</button>
+      <button class="btn btn-lg btn-block" value="Rechercher" onclick="fnFetch();">Rechercher</button>
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2020-2021</p>
     </form>
   </body>
