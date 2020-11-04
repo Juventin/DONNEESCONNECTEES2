@@ -87,8 +87,6 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
     // On récupère les données du film demandé
     var films;
     var url = "https://api.betaseries.com/movies/search?key=c3796994ef78&title=" + movie;
-
-
     await fetch(url, {
             headers: {
                 'Content-Type': 'application/json'
@@ -100,28 +98,32 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
         })
 
 
+    // On récupère le film demandé
+    var region = req.param("region");
+    function checkRegion(regioncheck) {
+        return regioncheck.Libelle == region;
+    }
+    var indexRegion = regions.findIndex(checkRegion);
+    console.log(indexRegion);
+
+
     // On récupère les données météo
     var result = '';
-    var meteo = new Array();
-    for (var i = 0; i < regions.length; i++) {
-        var lat = regions[i].lat;
-        var lng = regions[i].lng;
-        var key = regions[i].Code;
-        await fetch('https://www.prevision-meteo.ch/services/json/lat=' + lat + 'lng=' + lng, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(function (response) {
-                response.json()
-                    .then(function (data) {
-                        result = data;
-                        result.code = key;
-                        meteo.push(result);
-                    })
-            })
-    }
-
+    var meteo_arr = new Array();
+    var lat = regions[indexRegion].lat;
+    var lng = regions[indexRegion].lng;
+    var key = regions[indexRegion].Code;
+    await fetch('https://www.prevision-meteo.ch/services/json/lat=' + lat + 'lng=' + lng, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            var meteo = json;
+            meteo.code = key;
+            meteo_arr.push(meteo);
+        })
     var yesterday = new Date(new Date().setDate(new Date().getDate() - 3))
 
     // On récupère les données google trends
@@ -139,14 +141,25 @@ app.get("/trends", cors(corsOptions), async function (req, res) {
             // Ok pour trends
             var trends = json['default']['geoMapData'];
 
+            // On jointe les deux merged sur code == Code
+            var merged = mergeData(meteo_arr, "code",regions, "Code");
+            merged = cleanData(merged, 'region')
+            console.log(meteo_arr);
+            
             // On jointe les deux sur Libelle == geoName
+            var merged2 = mergeData(merged, 'Libelle', trends, 'geoName');
+            // On joint merged avec film
+            var merged3 = mergeDataNoJointure(films.movies, merged2);
+
+
+            /*// On jointe les deux sur Libelle == geoName
             var merged = mergeData(regions, 'Libelle', trends, 'geoName');
 
             // On joint merged avec film
             var merged2 = mergeDataNoJointure(merged, films);
 
             // On jointe les deux merged sur code == Code
-            var merged3 = mergeData(merged2, "Code", meteo, "code");
+            var merged3 = mergeData(merged2, "Code", meteo, "code");*/
 
             // On le renvoie
             res.format({
@@ -204,12 +217,13 @@ app.get("/region", cors(corsOptions), async function (req, res) {
     var regions = getRegions();
 
     // On récupère le film demandé
-    var region = req.param("title");
+    var region = req.param("region");
 
     function checkRegion(regioncheck) {
-        return regioncheck.Libelle = region;
+        return regioncheck.Libelle == region;
     }
-    var indexRegion = regions.findIndex(checkRegion)
+    var indexRegion = regions.findIndex(checkRegion);
+    console.log(indexRegion);
 
 
     // On récupère les données météo
@@ -226,10 +240,13 @@ app.get("/region", cors(corsOptions), async function (req, res) {
         .then(res => res.json())
         .then(json => {
             var meteo = json;
+            var meteo_arr = new Array();
+            meteo.code = key;
+            meteo_arr.push(meteo);
 
 
             // On jointe les deux merged sur code == Code
-            var merged = mergeData(regions, "Code", meteo, "code");
+            var merged = mergeData(meteo_arr, "code",regions, "Code");
             merged = cleanData(merged, 'region')
 
             // On le renvoie
