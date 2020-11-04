@@ -67,7 +67,7 @@ function mergeDataNoJointure(arr1, arr2) {
     for (let i = 0; i < arr1.length; i++) {
         merged.push({
             ...arr1[i],
-                ...arr2
+                arr2
         });
     }
 
@@ -148,8 +148,8 @@ app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
             // On jointe les deux sur Libelle == geoName
             var merged2 = mergeData(merged, 'Region', trends, 'geoName');
             // On joint merged avec film
-            var merged3 = mergeDataNoJointure(films.movies, merged2);
-            merged3 = cleanData(merged3, 'trends')
+            var merged3 = mergeDataNoJointure(merged2,films.movies);
+            //merged3 = cleanData(merged3, 'trends')
             console.log(merged3)
 
 
