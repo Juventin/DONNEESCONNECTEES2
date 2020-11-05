@@ -30,11 +30,6 @@ var corsOptions = {
 app.use(express.static('docs'));
 
 
-// app.get("/:name", function(req, res){
-//     res.send("hello : " + req.params.name );
-// })
-
-
 
 
 function getRegions() {
@@ -150,16 +145,6 @@ app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
             // On joint merged avec film
             var merged3 = mergeDataNoJointure(films.movies, merged2);
             merged3 = cleanData(merged3, 'trends', movie)
-
-
-            /*// On jointe les deux sur Libelle == geoName
-            var merged = mergeData(regions, 'Libelle', trends, 'geoName');
-
-            // On joint merged avec film
-            var merged2 = mergeDataNoJointure(merged, films);
-
-            // On jointe les deux merged sur code == Code
-            var merged3 = mergeData(merged2, "Code", meteo, "code");*/
 
             // On le renvoie
             res.format({
