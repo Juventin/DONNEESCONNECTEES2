@@ -194,7 +194,7 @@ app.get("/movie/:movie", cors(corsOptions), async function (req, res) {
         .then(res => res.json())
         .then(json => {
             films = json;
-            films = cleanData(films['movies'], 'films')
+            films = cleanData(films['movies'], 'films', movie)
 
             res.format({
                 /*'text/html': function () {

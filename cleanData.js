@@ -33,6 +33,7 @@ function cleanData(data, type, word=false) {
     }
 
     if (type == 'films') {
+        data2.word = word
         for (let i = 0; i < data.length; i++) {
             let row = {}
             row.Id = data[i]['id']
