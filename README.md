@@ -31,9 +31,9 @@ Son objectif est de metre à disposition des données permettant l'analyse de co
 Les données peuvent être consultées depuis l'interface utilisateur, avec un formulaire en page d'accueil, ou en renseignant directement le titre du film dans l'adresse URL.
 
 ## Routes
-  - **GET /trends/:film/:region** :renvoie la popularité sur Google du film choisi pour chaque région.
-  - **GET /movie/:film** :renvoie les informations relatives à un film choisi.
-  - **GET /region/:region** :renvoie le taux de chômage ainsi que la météo pour la région choisie.
+  - **GET /movie/:film** : Renvoie les informations relatives à tous les films dont le titre contient ou est égal au nom choisi.
+  - **GET /region/:region** : Renvoie le taux de chômage ainsi que la météo pour la région choisie.
+  - **GET /trends/:film/:region** : Renvoie les informations relatives à la région choisie, les informations relatives à chaque film contenant le nom choisi, ainsi que la popularité de ce nom dans la région.
 
 Contraintes: 
   - Tous les parametres placés en URL sont encodés. 
