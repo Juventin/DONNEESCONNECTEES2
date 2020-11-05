@@ -17,10 +17,10 @@ function cleanData(data, type, word=false) {
             row.Code = data[i]['Code']
             row.Region = data[i]['Libelle']
             try {
-                row.Date = data[i]['current_condition']['date']
-                row.Hour = data[i]['current_condition']['hour']
                 row.Taux_chomage = data[i]['T2_2020']
                 row.Meteo = {}
+                row.Meteo.Date = data[i]['current_condition']['date']
+                row.Meteo.Hour = data[i]['current_condition']['hour']
                 row.Meteo.Temperature = data[i]['current_condition']['tmp']
                 row.Meteo.Wind_speed = data[i]['current_condition']['wnd_spd']
                 row.Meteo.Wind_direction = data[i]['current_condition']['wnd_dir']
