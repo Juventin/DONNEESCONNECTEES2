@@ -1,4 +1,4 @@
-function cleanData(data, type) {
+function cleanData(data, type, word=false) {
     console.log('Cleaning')
     let data2 = []
 
@@ -50,7 +50,8 @@ function cleanData(data, type) {
 
     if (type == 'trends') {
         data2 = data[0][0]
-        data2.Value = data2.value[0]
+        data2.word = word
+        data2.Popularite = data2.value[0]
         delete data2['value']
         delete data2['geoCode']
         delete data2['geoName']
