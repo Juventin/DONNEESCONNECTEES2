@@ -33,10 +33,11 @@ function cleanData(data, type, word=false) {
     }
 
     if (type == 'films') {
+        data2 = {}
         data2.word = word
+        data2.Films = []
         for (let i = 0; i < data.length; i++) {
             let row = {}
-            row.Id = data[i]['id']
             row.Title = data[i]['title']
             row.Original_title = data[i]['original_title']
             row.Production_year = data[i]['production_year']
@@ -45,7 +46,7 @@ function cleanData(data, type, word=false) {
             row.Length = data[i]['length']
             row.Genres = data[i]['genres']
             row.Original_language = data[i]['language']
-            data2.push(row);
+            data2.Films.push(row);
         }
     }
 
