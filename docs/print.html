@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./img/unnamed.jpg">
+
+    <title>Netflix But No Chill</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./css/floating-labels.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+
+    <!-- Highcharts -->
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/fr/custom/fr-all-mainland.js"></script>
+  </head>
+
+  <body onload="launchFetch();">
+
+    <div class="form-signin">
+      <a href="./index.html" class="btn btn-default"><</a>
+      <div class="text-center mb-4">
+        <img class="mb-4 logo" src="./img/unnamed.jpg" alt="" width="36" height="36">
+      </div>
+
+      <div id="container"></div>
+      <button class="btn btn-lg btn-block" onclick="downloadFetch()">Exporter</button>
+    </div>
+  </body>
+  <script src="./js/script.js"></script>
+</html>
