@@ -69,7 +69,9 @@ function mergeDataNoJointure(arr1, arr2) {
 }
 
 
-app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
+app.get("/trends/:movie/:region", 
+        // cors(corsOptions), 
+        async function (req, res) {
 
     // On récupère régions
     var regions = getRegions();
@@ -162,7 +164,9 @@ app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
 })
 
 
-app.get("/movie/:movie", cors(corsOptions), async function (req, res) {
+app.get("/movie/:movie", 
+        // cors(corsOptions), 
+        async function (req, res) {
 
     var movie = decodeURI(req.params.movie);
     // On récupère les données du film demandé
@@ -198,7 +202,9 @@ app.get("/movie/:movie", cors(corsOptions), async function (req, res) {
 
 })
 
-app.get("/region/:region", cors(corsOptions), async function (req, res) {
+app.get("/region/:region", 
+        // cors(corsOptions), 
+        async function (req, res) {
 
     // On récupère régions
     var regions = getRegions();
