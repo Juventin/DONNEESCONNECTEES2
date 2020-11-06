@@ -231,7 +231,7 @@ app.get("/region/:region", async function (req, res) {
     console.log(indexRegion);
 
 
-    // On récupère les données météo
+/////////////////////// On récupère les données météo
     var result = '';
     var meteo = new Array();
     var lat = regions[indexRegion].lat;
