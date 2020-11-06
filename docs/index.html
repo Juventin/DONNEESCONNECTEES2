@@ -58,9 +58,20 @@
         <label for="title">Film</label>
       </div>
 
-      <div class="form-label-group">
-        <input type="text" id="region" name="region" class="form-control" placeholder="Île-de-France" required>
-        <label for="region">Région</label>
+      <div class="form-label-group" required>
+        <select id="region" name="region" class="custom-select form-label-group" >
+          <option>île-de-france</option>
+          <option>centre-val de loire</option>
+          <option>franche-comté</option>
+          <option>haute normandée</option>
+          <option>nord-pas-de-calais</option>
+          <option>alsace</option>
+          <option>aquitaine</option>
+          <option>pays de la loire</option>
+          <option>languedoc-roussillon</option>
+          <option>rhone-alpes</option>
+          <option>provence-alpes-côtes d'azur</option>
+        </select>
       </div>
       <button class="btn btn-lg btn-block">Rechercher</button>
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2020-2021</p>
