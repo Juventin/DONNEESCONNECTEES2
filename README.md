@@ -71,7 +71,7 @@ Détail du travail réalisé pour adapter les champs de jointure:
 ## Structure des données (MCD et RDF) 
 
 **MCD**
-![MCD test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/Diagramme MCD VF.png)
+![MCD test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/Diagramme.png)
 
 **RDF**
-![RDF test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/Diagramme RDF VF.png)
+![RDF test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/RDF.png)
