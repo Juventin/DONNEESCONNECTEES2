@@ -19,9 +19,9 @@ const googleTrends = require('google-trends-api');
 var cors = require('cors');
 var corsOptions = {
     origin: [
-        'https://netflixbutnochill.herokuapp.com/',
-        'https://juventin.github.io/DONNEESCONNECTEES2/',
-        'http://localhost:3000'
+        // 'https://netflixbutnochill.herokuapp.com/',
+        // 'https://juventin.github.io/DONNEESCONNECTEES2/',
+        '*'
     ],
     optionsSuccessStatus: 200
 }
