@@ -256,15 +256,15 @@ app.get("/region/:region", async function (req, res) {
 
             // On le renvoie
             res.format({
-                'application/json': function () {
-                    res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
-                    res.set('Content-Type', 'application/json');
-                    res.json(merged);
-                },
                 'application/rdf+xml': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
                     res.set('Content-Type', 'application/xml');
                     res.send(toXML(merged));
+                },
+                'application/json': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
+                    res.set('Content-Type', 'application/json');
+                    res.json(merged);
                 }
             })
 
