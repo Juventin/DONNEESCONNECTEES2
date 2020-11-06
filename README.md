@@ -36,6 +36,7 @@ Les données peuvent être consultées depuis l'interface utilisateur, avec un f
   - **GET /movie/:film** : Renvoie les informations relatives à tous les films dont le titre contient ou est égal au nom choisi.
   - **GET /region/:region** : Renvoie le taux de chômage ainsi que la météo pour la région choisie.
   - **GET /trends/:film/:region** : Renvoie les informations relatives à la région choisie, les informations relatives à chaque film contenant le nom choisi, ainsi que la popularité de ce nom dans la région.
+  - **GET /vocabulary** : Renvoie le vocabulaire RDF des exports XML.
 
 Contraintes: 
   - Tous les parametres placés en URL sont encodés. 
