@@ -5,8 +5,8 @@ function cleanData(data, type, word=false) {
     if (type == 'trend') {
         for (let i = 0; i < data.length; i++) {
             let row = {}
-            row.Popularité = data[i]['value'][0]
-            row.geoName = data[i]['geoName']
+            row.popularite = data[i]['value'][0]
+            row.nomRegion = data[i]['geoName']
             data2.push(row);
         }
     }
@@ -14,19 +14,19 @@ function cleanData(data, type, word=false) {
     if (type == 'region') {
         for (let i = 0; i < data.length; i++) {
             let row = {}
-            row.Code = data[i]['Code']
+            row.cle = data[i]['Code']
             row.Region = data[i]['Libelle']
             try {
-                row.Taux_chomage = data[i]['T2_2020']
+                row.tauxChomage = data[i]['T2_2020']
                 row.Meteo = {}
-                row.Meteo.Date = data[i]['current_condition']['date']
-                row.Meteo.Hour = data[i]['current_condition']['hour']
-                row.Meteo.Temperature = data[i]['current_condition']['tmp']
-                row.Meteo.Wind_speed = data[i]['current_condition']['wnd_spd']
-                row.Meteo.Wind_direction = data[i]['current_condition']['wnd_dir']
-                row.Meteo.pressure = data[i]['current_condition']['pressure']
-                row.Meteo.humidity = data[i]['current_condition']['humidity']
-                row.Meteo.condition_climatique = data[i]['current_condition']['condition']
+                row.Meteo.date = data[i]['current_condition']['date']
+                row.Meteo.hour = data[i]['current_condition']['hour']
+                row.Meteo.temperature = data[i]['current_condition']['tmp']
+                row.Meteo.vitesseDuVent = data[i]['current_condition']['wnd_spd']
+                row.Meteo.directionDuVent = data[i]['current_condition']['wnd_dir']
+                row.Meteo.pression = data[i]['current_condition']['pressure']
+                row.Meteo.humidite = data[i]['current_condition']['humidity']
+                row.Meteo.conditionClimatique = data[i]['current_condition']['condition']
             } catch (e) {}
             data2.push(row);
         }
@@ -35,18 +35,18 @@ function cleanData(data, type, word=false) {
     if (type == 'films') {
         data2 = {}
         data2.word = word
-        data2.Films = []
+        data2.Movies = []
         for (let i = 0; i < data.length; i++) {
             let row = {}
-            row.Title = data[i]['title']
-            row.Original_title = data[i]['original_title']
-            row.Production_year = data[i]['production_year']
-            row.Release_date = data[i]['original_release_date']
-            row.Director = data[i]['director']
-            row.Length = data[i]['length']
-            row.Genres = data[i]['genres']
-            row.Original_language = data[i]['language']
-            data2.Films.push(row);
+            row.titre = data[i]['title']
+            row.originalTitre = data[i]['original_title']
+            row.productionYear = data[i]['production_year']
+            row.releaseDate = data[i]['original_release_date']
+            row.director = data[i]['director']
+            row.length = data[i]['length']
+            row.genres = data[i]['genres']
+            row.originalLanguage = data[i]['language']
+            data2.Movies.push(row);
         }
     }
 
@@ -60,18 +60,18 @@ function cleanData(data, type, word=false) {
         delete data2['formattedValue']
         delete data2['maxValueIndex']
         delete data2['hasData']
-        data2.Films = []
+        data2.Movies = []
         for (let i = 0; i < data.length; i++) {
             let row = {}
-            row.Title = data[i]['title']
-            row.Original_title = data[i]['original_title']
-            row.Production_year = data[i]['production_year']
-            row.Release_date = data[i]['original_release_date']
-            row.Director = data[i]['director']
-            row.Length = data[i]['length']
-            row.Genres = data[i]['genres']
-            row.Original_language = data[i]['language']
-            data2.Films.push(row);
+            row.title = data[i]['title']
+            row.originalTitle = data[i]['original_title']
+            row.productionYear = data[i]['production_year']
+            row.releaseDate = data[i]['original_release_date']
+            row.director = data[i]['director']
+            row.length = data[i]['length']
+            row.genres = data[i]['genres']
+            row.originalLanguage = data[i]['language']
+            data2.Movies.push(row);
         }
 
     }

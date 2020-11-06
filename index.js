@@ -2,7 +2,10 @@
 
 import { cleanData } from './cleanData.js';
 import { createRequire } from 'module';
+import pkg from 'jstoxml';
+const { toXML } = pkg;
 const require = createRequire(import.meta.url);
+
 
 var express = require('express');
 var app = express();
@@ -157,10 +160,11 @@ app.get("/trends/:movie/:region", async function (req, res) {
 
             // On le renvoie
             res.format({
-                /*'text/html': function () {
-                    console.log(merged3)
-                    res.send("data fetched look your console");
-                },*/
+                'application/rdf+xml': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
+                    res.set('Content-Type', 'application/xml');
+                    res.send(toXML(merged3));
+                },
                 'application/json': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
                     res.set('Content-Type', 'application/json');
@@ -193,10 +197,11 @@ app.get("/movie/:movie", async function (req, res) {
             console.log(films)
 
             res.format({
-                /*'text/html': function () {
-                    console.log(merged3)
-                    res.send("data fetched look your console");
-                },*/
+                'application/rdf+xml': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
+                    res.set('Content-Type', 'application/xml');
+                    res.send(toXML(films));
+                },
                 'application/json': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
                     res.set('Content-Type', 'application/json');
@@ -250,10 +255,11 @@ app.get("/region/:region", async function (req, res) {
 
             // On le renvoie
             res.format({
-                /*'text/html': function () {
-                    console.log(merged3)
-                    res.send("data fetched look your console");
-                },*/
+                'application/rdf+xml': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
+                    res.set('Content-Type', 'application/xml');
+                    res.send(toXML(merged));
+                },
                 'application/json': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
                     res.set('Content-Type', 'application/json');
