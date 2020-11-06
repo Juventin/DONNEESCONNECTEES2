@@ -39,7 +39,7 @@ Les données peuvent être consultées depuis l'interface utilisateur, avec un f
   - **GET /vocabulary** : Renvoie le vocabulaire RDF des exports XML.
 
 Contraintes: 
-  - Tous les parametres placés en URL sont encodés. 
+  - Tous les parametres placés en URL doivent être correctement encodés. 
 
 ## Choix des données et méthodes de récupération
 Sources de données :
