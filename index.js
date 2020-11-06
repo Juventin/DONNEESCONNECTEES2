@@ -16,15 +16,14 @@ var path = require('path');
 
 const googleTrends = require('google-trends-api');
 
-var cors = require('cors');
-var corsOptions = {
-    origin: [
-        // 'https://netflixbutnochill.herokuapp.com/',
-        // 'https://juventin.github.io/DONNEESCONNECTEES2/',
-        '*'
-    ],
-    optionsSuccessStatus: 200
-}
+// var cors = require('cors');
+// var corsOptions = {
+//     origin: [
+//         'https://netflixbutnochill.herokuapp.com/',
+//         'https://juventin.github.io/DONNEESCONNECTEES2/',
+//     ],
+//     optionsSuccessStatus: 200
+// }
 
 
 app.get("/", function(req, res){
