@@ -18,7 +18,7 @@ const googleTrends = require('google-trends-api');
 
 var cors = require('cors');
 var corsOrigins = [
-    'https://juventin.github.io/DONNEESCONNECTEES2/', 
+    // 'https://juventin.github.io/DONNEESCONNECTEES2/', 
     '*' // DEV
 ]
 
