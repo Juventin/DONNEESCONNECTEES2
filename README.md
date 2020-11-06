@@ -1,9 +1,11 @@
-# Netflix but moyen chill
+# Netflix but no chill
 
 
 ![Netflix test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/logo.PNG)
 
-**lien vers le service déployé : https://netflixbutnochill.herokuapp.com/**
+**lien vers l'api : https://netflixbutnochill.herokuapp.com/**
+
+**lien vers la github page : https://juventin.github.io/DONNEESCONNECTEES2/**
 
 **lien vers la présentation : https://docs.google.com/presentation/d/1fCM2Ldpqu3CH53UTrz0MDr0l8LxQL9NJo8QfuZu9_0s/edit?usp=sharing**
 
@@ -34,9 +36,10 @@ Les données peuvent être consultées depuis l'interface utilisateur, avec un f
   - **GET /movie/:film** : Renvoie les informations relatives à tous les films dont le titre contient ou est égal au nom choisi.
   - **GET /region/:region** : Renvoie le taux de chômage ainsi que la météo pour la région choisie.
   - **GET /trends/:film/:region** : Renvoie les informations relatives à la région choisie, les informations relatives à chaque film contenant le nom choisi, ainsi que la popularité de ce nom dans la région.
+  - **GET /vocabulary** : Renvoie le vocabulaire RDF des exports XML.
 
 Contraintes: 
-  - Tous les parametres placés en URL sont encodés. 
+  - Tous les parametres placés en URL doivent être correctement encodés. 
 
 ## Choix des données et méthodes de récupération
 Sources de données :
@@ -67,11 +70,9 @@ L'objectif de ces liaisons va etre de ne créer qu'une seule table qui repertori
 Détail du travail réalisé pour adapter les champs de jointure: 
  - La longitude et la latitude a du être ajouté sur **INSEE** de manière manuelle afin de faire la liaison avec les données **Méteo**.L'objectif serait d'automatisé la récupération de ces données. 
  
- 
-## Structure des données (MCD et RDF) 
 
-**MCD**
+## Diagramme de classes
 ![MCD test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/Diagramme.png)
 
-**RDF**
+## Diagramme entités relations
 ![RDF test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/RDF.png)

@@ -2,7 +2,10 @@
 
 import { cleanData } from './cleanData.js';
 import { createRequire } from 'module';
+import pkg from 'jstoxml';
+const { toXML } = pkg;
 const require = createRequire(import.meta.url);
+
 
 var express = require('express');
 var app = express();
@@ -17,19 +20,16 @@ var path = require('path');
 const googleTrends = require('google-trends-api');
 
 var cors = require('cors');
-var corsOptions = {
-    origin: [
-        'https://netflixbutnochill.herokuapp.com/',
-        'https://juventin.github.io/DONNEESCONNECTEES2/'
-    ],
-    optionsSuccessStatus: 200
-}
+var corsOrigins = [
+    // 'https://juventin.github.io/DONNEESCONNECTEES2/', // PROD
+    '*' // DEV
+]
 
 
-//serves static files
-app.use(express.static('docs'));
 
-
+app.get("/", function(req, res){
+    res.send("Retrouvez la documentation sur le lien suivant : https://github.com/Juventin/DONNEESCONNECTEES2");
+})
 
 
 function getRegions() {
@@ -69,8 +69,20 @@ function mergeDataNoJointure(arr1, arr2) {
     return merged;
 }
 
+app.get("/vocabulary", function(req, res){
+    res.setHeader('Access-Control-Allow-Origin', corsOrigins);
 
-app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
+    let filePath = path.join('files', 'rdfvocabulary.xml');
+
+    let xml = fs.readFileSync(filePath);
+
+    res.setHeader('Content-disposition', 'attachment; filename=rdfvocabulary.xml'); //do nothing
+    res.set('Content-Type', 'application/xml');
+    res.send(xml);
+})
+
+app.get("/trends/:movie/:region", async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin', corsOrigins);
 
     // On récupère régions
     var regions = getRegions();
@@ -119,7 +131,8 @@ app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
             meteo.code = key;
             meteo_arr.push(meteo);
         })
-    var yesterday = new Date(new Date().setDate(new Date().getDate() - 3))
+
+    var yesterday = new Date(new Date().setDate(new Date().getDate() - 10))
 
     // On récupère les données google trends
     // Et on fait notre fusion de données avec ces données
@@ -148,14 +161,15 @@ app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
 
             // On le renvoie
             res.format({
-                /*'text/html': function () {
-                    console.log(merged3)
-                    res.send("data fetched look your console");
-                },*/
                 'application/json': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
                     res.set('Content-Type', 'application/json');
                     res.json(merged3);
+                },
+                'application/rdf+xml': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
+                    res.set('Content-Type', 'application/xml');
+                    res.send(toXML(merged3));
                 }
             })
         })
@@ -163,7 +177,8 @@ app.get("/trends/:movie/:region", cors(corsOptions), async function (req, res) {
 })
 
 
-app.get("/movie/:movie", cors(corsOptions), async function (req, res) {
+app.get("/movie/:movie", async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin', corsOrigins);
 
     var movie = decodeURI(req.params.movie);
     // On récupère les données du film demandé
@@ -183,14 +198,15 @@ app.get("/movie/:movie", cors(corsOptions), async function (req, res) {
             console.log(films)
 
             res.format({
-                /*'text/html': function () {
-                    console.log(merged3)
-                    res.send("data fetched look your console");
-                },*/
                 'application/json': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
                     res.set('Content-Type', 'application/json');
                     res.json(films);
+                },
+                'application/rdf+xml': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
+                    res.set('Content-Type', 'application/xml');
+                    res.send(toXML(films));
                 }
             })
         })
@@ -199,7 +215,8 @@ app.get("/movie/:movie", cors(corsOptions), async function (req, res) {
 
 })
 
-app.get("/region/:region", cors(corsOptions), async function (req, res) {
+app.get("/region/:region", async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin', corsOrigins);
 
     // On récupère régions
     var regions = getRegions();
@@ -239,10 +256,11 @@ app.get("/region/:region", cors(corsOptions), async function (req, res) {
 
             // On le renvoie
             res.format({
-                /*'text/html': function () {
-                    console.log(merged3)
-                    res.send("data fetched look your console");
-                },*/
+                'application/rdf+xml': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
+                    res.set('Content-Type', 'application/xml');
+                    res.send(toXML(merged));
+                },
                 'application/json': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
                     res.set('Content-Type', 'application/json');
@@ -252,6 +270,9 @@ app.get("/region/:region", cors(corsOptions), async function (req, res) {
 
         })
 })
+
+app.use(cors({origin: corsOrigins}));
+
 
 app.listen(port, function () {
     console.log('Serveur listening on port ' + port);
