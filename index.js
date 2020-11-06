@@ -68,6 +68,8 @@ app.get("/vocabulary", function(req, res){
 
     let xml = fs.readFileSync(filePath);
 
+    res.setHeader('Content-disposition', 'attachment; filename=rdfvocabulary.xml'); //do nothing
+    res.set('Content-Type', 'application/xml');
     res.send(xml);
 })
 
