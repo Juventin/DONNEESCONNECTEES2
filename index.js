@@ -20,7 +20,8 @@ var cors = require('cors');
 var corsOptions = {
     origin: [
         'https://netflixbutnochill.herokuapp.com/',
-        'https://juventin.github.io/DONNEESCONNECTEES2/'
+        'https://juventin.github.io/DONNEESCONNECTEES2/',
+        'http://localhost:3000'
     ],
     optionsSuccessStatus: 200
 }
