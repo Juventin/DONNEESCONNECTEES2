@@ -70,10 +70,10 @@ Détail du travail réalisé pour adapter les champs de jointure:
  - La longitude et la latitude a du être ajouté sur **INSEE** de manière manuelle afin de faire la liaison avec les données **Méteo**.L'objectif serait d'automatisé la récupération de ces données. 
  
  
-## Structure des données (MCD et RDF) 
+## RDF
 
-**MCD**
+**Diagramme de classes**
 ![MCD test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/Diagramme.png)
 
-**RDF**
+**Diagramme entités relations**
 ![RDF test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/RDF.png)
