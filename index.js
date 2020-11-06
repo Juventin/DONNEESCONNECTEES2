@@ -161,15 +161,15 @@ app.get("/trends/:movie/:region", async function (req, res) {
 
             // On le renvoie
             res.format({
-                'application/rdf+xml': function () {
-                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
-                    res.set('Content-Type', 'application/xml');
-                    res.send(toXML(merged3));
-                },
                 'application/json': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
                     res.set('Content-Type', 'application/json');
                     res.json(merged3);
+                },
+                'application/rdf+xml': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
+                    res.set('Content-Type', 'application/xml');
+                    res.send(toXML(merged3));
                 }
             })
         })
@@ -198,15 +198,15 @@ app.get("/movie/:movie", async function (req, res) {
             console.log(films)
 
             res.format({
-                'application/rdf+xml': function () {
-                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
-                    res.set('Content-Type', 'application/xml');
-                    res.send(toXML(films));
-                },
                 'application/json': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
                     res.set('Content-Type', 'application/json');
                     res.json(films);
+                },
+                'application/rdf+xml': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
+                    res.set('Content-Type', 'application/xml');
+                    res.send(toXML(films));
                 }
             })
         })
@@ -256,15 +256,15 @@ app.get("/region/:region", async function (req, res) {
 
             // On le renvoie
             res.format({
-                'application/rdf+xml': function () {
-                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
-                    res.set('Content-Type', 'application/xml');
-                    res.send(toXML(merged));
-                },
                 'application/json': function () {
                     res.setHeader('Content-disposition', 'attachment; filename=score.json'); //do nothing
                     res.set('Content-Type', 'application/json');
                     res.json(merged);
+                },
+                'application/rdf+xml': function () {
+                    res.setHeader('Content-disposition', 'attachment; filename=score.xml'); //do nothing
+                    res.set('Content-Type', 'application/xml');
+                    res.send(toXML(merged));
                 }
             })
 
