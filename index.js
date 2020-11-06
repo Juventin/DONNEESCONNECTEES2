@@ -17,6 +17,11 @@ var path = require('path');
 const googleTrends = require('google-trends-api');
 
 var cors = require('cors');
+var corsOrigins = [
+    'https://juventin.github.io/DONNEESCONNECTEES2/', 
+    '*' // DEV
+]
+
 
 
 app.get("/", function(req, res){
@@ -62,7 +67,7 @@ function mergeDataNoJointure(arr1, arr2) {
 }
 
 app.get("/vocabulary", function(req, res){
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', corsOrigins);
 
     let filePath = path.join('files', 'rdfvocabulary.xml');
 
@@ -74,7 +79,7 @@ app.get("/vocabulary", function(req, res){
 })
 
 app.get("/trends/:movie/:region", async function (req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', corsOrigins);
 
     // On récupère régions
     var regions = getRegions();
@@ -168,7 +173,7 @@ app.get("/trends/:movie/:region", async function (req, res) {
 
 
 app.get("/movie/:movie", async function (req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', corsOrigins);
 
     var movie = decodeURI(req.params.movie);
     // On récupère les données du film demandé
@@ -205,7 +210,7 @@ app.get("/movie/:movie", async function (req, res) {
 })
 
 app.get("/region/:region", async function (req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', corsOrigins);
 
     // On récupère régions
     var regions = getRegions();
@@ -259,11 +264,7 @@ app.get("/region/:region", async function (req, res) {
         })
 })
 
-app.use(cors({origin: '*'}));
-// origin: [
-//     'https://netflixbutnochill.herokuapp.com/',
-//     'https://juventin.github.io/DONNEESCONNECTEES2/',
-// ],
+app.use(cors({origin: corsOrigins}));
 
 
 app.listen(port, function () {
