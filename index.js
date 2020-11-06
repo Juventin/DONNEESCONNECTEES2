@@ -26,10 +26,9 @@ var corsOptions = {
 }
 
 
-//serves static files
-app.use(express.static('docs'));
-
-
+app.get("/", function(req, res){
+    res.send("Retrouvez la documentation sur le lien suivant : https://github.com/Juventin/DONNEESCONNECTEES2");
+})
 
 
 function getRegions() {
