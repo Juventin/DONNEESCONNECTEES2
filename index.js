@@ -131,7 +131,8 @@ app.get("/trends/:movie/:region", async function (req, res) {
             meteo.code = key;
             meteo_arr.push(meteo);
         })
-    var yesterday = new Date(new Date().setDate(new Date().getDate() - 3))
+
+    var yesterday = new Date(new Date().setDate(new Date().getDate() - 10))
 
     // On récupère les données google trends
     // Et on fait notre fusion de données avec ces données
