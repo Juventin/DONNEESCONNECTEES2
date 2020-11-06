@@ -1,4 +1,4 @@
-# Netflix but moyen chill
+# Netflix but no chill
 
 
 ![Netflix test](https://github.com/Juventin/DONNEESCONNECTEES2/blob/main/docs/img/logo.PNG)
