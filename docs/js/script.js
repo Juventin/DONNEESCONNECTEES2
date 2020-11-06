@@ -33,7 +33,7 @@ async function fetchMovie(movie){
 		response.json()
 		.then(function(data){
 			result = data;
-			var tab = "<table class='table table-dark'><thead> <tr> <th scope='col'>#</th> <th scope='col'>Director</th> <th scope='col'>Original_title</th></tr> </thead><tbody> ";
+			var tab = "<table class='table table-dark'><thead> <tr> <th scope='col'>#</th> <th scope='col'>Directeur</th> <th scope='col'>Titre</th></tr> </thead><tbody> ";
 			for (var i = 0; i < data.Movies.length; i++){
 				tab += "<tr> <th scope='row'>"+i+"</th> <td>"+data.Movies[i].director+"</td> <td>"+data.Movies[i].originalTitre+"</td> </tr>";
 			}
@@ -70,6 +70,7 @@ async function downloadFetch(){
 }
 
 async function fetchRegion(region){
+	document.getElementById("exportButton").innerHTML = "Exporter en XML";
 	var data_trad = [
 		['fr-bre', 53], //53
 		['fr-pdl', 75], //75
