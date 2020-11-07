@@ -356,7 +356,7 @@ app.get("/regionXML/:region", async function (req, res) {
     var indexRegion = regions.findIndex(checkRegion);
     console.log(indexRegion);
 
-    // On récupère les données météo
+/////////////////////// On récupère les données météo
     var result = '';
     var meteo = new Array();
     var lat = regions[indexRegion].lat;

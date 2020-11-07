@@ -22,6 +22,7 @@ async function launchFetch(){
 	}else{
 		console.log("-- no fetch");
 	}
+	document.getElementById("loading").style.display = "none"
 
 }
 
@@ -42,7 +43,7 @@ async function fetchMovie(movie){
 	});
 }
 
-async function downloadFetch(){
+async function downloadFetchJSON(){
 	let title = "";
 	let region = "";
 	let searchParams = new URLSearchParams(window.location.search);
@@ -69,8 +70,34 @@ async function downloadFetch(){
 	}
 }
 
+async function downloadFetchXML(){
+	let title = "";
+	let region = "";
+	let searchParams = new URLSearchParams(window.location.search);
+	if(searchParams.has('title')==true){
+		title = searchParams.get('title');
+	}
+	if(searchParams.has('region')==true){
+		region = searchParams.get('region');
+	}
+	if(title != "" && region == ""){
+		var url = "https://netflixbutnochill.herokuapp.com/movieXML/"+title;
+		var win = window.open(url, '_blank');
+	  	win.focus();
+	}else if(title == "" && region != ""){
+	var url = "https://netflixbutnochill.herokuapp.com/regionXML/"+region;
+		var win = window.open(url, '_blank');
+	  	win.focus();
+	}else if(title != "" && region != ""){
+	var url = "https://netflixbutnochill.herokuapp.com/trendsXML/"+title+"/"+region;
+		var win = window.open(url, '_blank');
+	  	win.focus();
+	}else{
+		console.log("-- no fetch");
+	}
+}
+
 async function fetchRegion(region){
-	document.getElementById("exportButton").innerHTML = "Exporter en XML";
 	var data_trad = [
 		['fr-bre', 53], //53
 		['fr-pdl', 75], //75
@@ -229,6 +256,7 @@ async function fetchMovieRegion(title,region){
 			        },
 			        dataLabels: {
 			            enabled: true,
+                color: '#FFFFFF',
 			            format: '{point.name}'
 			        }
 			    }]
