@@ -149,7 +149,7 @@ async function fetchRegion(region){
 			    },
 
 			    subtitle: {
-			        text: 'Source map: https://netflixbutnochill.herokuapp.com'+'<br>Région: '+result[0].Region+'<br>Température: '+result[0].Meteo.temperature+'°C'
+			        text: '<small>Source: https://netflixbutnochill.herokuapp.com</small>'+'<br>Région: '+result[0].Region+'<br>Température: '+result[0].Meteo.temperature+'°C'
 			    },
 
 			    mapNavigation: {
@@ -232,7 +232,7 @@ async function fetchMovieRegion(title,region){
 			    },
 
 			    subtitle: {
-			        text: 'Source map: https://netflixbutnochill.herokuapp.com'+'<br>Mot: '+result.word+'<br>Popularité: '+result.Popularite+'%<br>Région: '+result.Region+'<br>Température: '+result.Meteo.temperature+'°C'
+			        text: '<small>Source: https://netflixbutnochill.herokuapp.com</small>'+'<br>Mot: '+result.word+'<br>Popularité: '+result.Popularite+'%<br>Région: '+result.Region+'<br>Température: '+result.Meteo.temperature+'°C'
 			    },
 
 			    mapNavigation: {
