@@ -6,28 +6,28 @@
 
         <!--Class TrendWordRegion -->
 
-        <rdfs:Class rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#TrendWordRegion">
+        <rdfs:Class rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#TrendWordRegion">
             <rdfs:label xml:lang="en">TrendWordRegion</rdfs:label>
             <rdfs:comment xml:lang="fr">Un concept pour représenter la popularité d’un mot dans une région</rdfs:comment>
         </rdfs:Class>
 
         <!--Class Region-->
 
-        <rdfs:Class rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#Region">
+        <rdfs:Class rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#Region">
             <rdfs:label xml:lang="en">Region</rdfs:label>
             <rdfs:comment xml:lang="fr">Une région de France</rdfs:comment>
         </rdfs:Class>
 
         <!--Class Film-->
 
-        <rdfs:Class rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#Movie">
+        <rdfs:Class rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#Movie">
             <rdfs:label xml:lang="en">Movie</rdfs:label>
             <rdfs:comment xml:lang="fr">Une classe pour décrire un film</rdfs:comment>
         </rdfs:Class>
 
         <!--Class Meteo-->
 
-        <rdfs:Class rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#Meteo">
+        <rdfs:Class rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#Meteo">
             <rdfs:label xml:lang="en">Meteo</rdfs:label>
             <rdfs:comment xml:lang="fr">La météo dans la région</rdfs:comment>
         </rdfs:Class>
@@ -38,181 +38,181 @@
 
         <!-- relation Movie vers TrendWordRegion-->
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasTrendWordRegion" rdfs:label="hasTrendWordRegion" rdfs:comment="Pour une collection de film sa popularitée par région associée">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasTrendWordRegion" rdfs:label="hasTrendWordRegion" rdfs:comment="Pour une collection de film sa popularitée par région associée">
             <rdfs:domain rdf:resource="#Movie" />
-            <rdfs:range rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#TrendWordRegion" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:range rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary#TrendWordRegion" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
 
         <!-- relation Movie vers ces literaux-->
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasOriginalTitle" rdfs:label="hasOriginalTitle" rdfs:comment="Le film dont on veut connaitre le titre original">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasOriginalTitle" rdfs:label="hasOriginalTitle" rdfs:comment="Le film dont on veut connaitre le titre original">
             <rdfs:domain rdf:resource="#Movie" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasTitle" rdfs:label="hasTitle" rdfs:comment="Le film dont on veut connaitre le titre">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasTitle" rdfs:label="hasTitle" rdfs:comment="Le film dont on veut connaitre le titre">
             <rdfs:domain rdf:resource="#Movie" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasProductYear" rdfs:label="hasProductYear" rdfs:comment="Le film dont on veut connaitre l'année de production">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasProductYear" rdfs:label="hasProductYear" rdfs:comment="Le film dont on veut connaitre l'année de production">
             <rdfs:domain rdf:resource="#Movie" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasRealaseDate" rdfs:label="hasRealaseDate" rdfs:comment="Le film dont on veut connaitre la date de sortie">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasRealaseDate" rdfs:label="hasRealaseDate" rdfs:comment="Le film dont on veut connaitre la date de sortie">
             <rdfs:domain rdf:resource="#Movie" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasCollectionGenre" rdfs:label="hasCollectionGenre" rdfs:comment="Le film dont on veut connaitre sa collection de genre">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasCollectionGenre" rdfs:label="hasCollectionGenre" rdfs:comment="Le film dont on veut connaitre sa collection de genre">
             <rdfs:domain rdf:resource="#Movie" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasCollectionOriginalLanguage" rdfs:label="hasCollectionOriginalLanguage" rdfs:comment="Le film dont on veut connaitre la langue original du film">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasCollectionOriginalLanguage" rdfs:label="hasCollectionOriginalLanguage" rdfs:comment="Le film dont on veut connaitre la langue original du film">
             <rdfs:domain rdf:resource="#Movie" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasLenght" rdfs:label="hasLenght" rdfs:comment="Le film dont on veut connaitre sa durée">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasLenght" rdfs:label="hasLenght" rdfs:comment="Le film dont on veut connaitre sa durée">
             <rdfs:domain rdf:resource="#Movie" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasDirector" rdfs:label="hasDirector" rdfs:comment="Le film dont on veut connaitre le directeur">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasDirector" rdfs:label="hasDirector" rdfs:comment="Le film dont on veut connaitre le directeur">
             <rdfs:domain rdf:resource="#Movie" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
 
         <!-- properties TrendWordRegion -->
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasWord" rdfs:label="hasWord" rdfs:comment="Le mot dont on veut connaître la popularité">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasWord" rdfs:label="hasWord" rdfs:comment="Le mot dont on veut connaître la popularité">
             <rdfs:domain rdf:resource="#TrendWordRegion" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasPopularite" rdfs:label="hasPopularite" rdfs:comment="La popularité d'un mot">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasPopularite" rdfs:label="hasPopularite" rdfs:comment="La popularité d'un mot">
             <rdfs:domain rdf:resource="#TrendWordRegion" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasNomRegion" rdfs:label="hasNomRegion" rdfs:comment="Le nom région de la nomenclature fr">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasNomRegion" rdfs:label="hasNomRegion" rdfs:comment="Le nom région de la nomenclature fr">
             <rdfs:domain rdf:resource="#TrendWordRegion" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasCollectionMovie" rdfs:label="hasCollectionMovie" rdfs:comment="Le film">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasCollectionMovie" rdfs:label="hasCollectionMovie" rdfs:comment="Le film">
             <rdfs:domain rdf:resource="#TrendWordRegion" />
-            <rdfs:range rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#Movie" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:range rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary#Movie" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
 
         <!-- properties Region -->
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasNomRegion" rdfs:label="hasNomRegion" rdfs:comment="Le nom région de la nomenclature fr">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasNomRegion" rdfs:label="hasNomRegion" rdfs:comment="Le nom région de la nomenclature fr">
             <rdfs:domain rdf:resource="#Region" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasCle" rdfs:label="hasCle" rdfs:comment="Le code région de la nomenclature fr">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasCle" rdfs:label="hasCle" rdfs:comment="Le code région de la nomenclature fr">
             <rdfs:domain rdf:resource="#Region" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasTauxChomage" rdfs:label="hasTauxChomage" rdfs:comment="Le taux de chomage de la région fr">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasTauxChomage" rdfs:label="hasTauxChomage" rdfs:comment="Le taux de chomage de la région fr">
             <rdfs:domain rdf:resource="#Region" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasLat" rdfs:label="hasLat" rdfs:comment="La lattitude de la région">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasLat" rdfs:label="hasLat" rdfs:comment="La lattitude de la région">
             <rdfs:domain rdf:resource="#Region" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasLng" rdfs:label="hasLng" rdfs:comment="La longitude de la région">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasLng" rdfs:label="hasLng" rdfs:comment="La longitude de la région">
             <rdfs:domain rdf:resource="#Region" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
         <!-- properties meteo -->
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasLat" rdfs:label="hasLat" rdfs:comment="La lattitude de la région">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasLat" rdfs:label="hasLat" rdfs:comment="La lattitude de la région">
             <rdfs:domain rdf:resource="#Meteo" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasLng" rdfs:label="hasLng" rdfs:comment="La longitude de la région">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasLng" rdfs:label="hasLng" rdfs:comment="La longitude de la région">
             <rdfs:domain rdf:resource="#Meteo" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasHumidite" rdfs:label="hasHumidite" rdfs:comment="L'humidité d'une région">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasHumidite" rdfs:label="hasHumidite" rdfs:comment="L'humidité d'une région">
             <rdfs:domain rdf:resource="#Meteo" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasDate" rdfs:label="hasDate" rdfs:comment="La date pour la météo">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasDate" rdfs:label="hasDate" rdfs:comment="La date pour la météo">
             <rdfs:domain rdf:resource="#Meteo" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasVitesseDuVent" rdfs:label="hasVitesseDuVent" rdfs:comment="La vitesse du vent d'une région">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasVitesseDuVent" rdfs:label="hasVitesseDuVent" rdfs:comment="La vitesse du vent d'une région">
             <rdfs:domain rdf:resource="#Meteo" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasTemperature" rdfs:label="hasTemperature" rdfs:comment="La température d'une région">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasTemperature" rdfs:label="hasTemperature" rdfs:comment="La température d'une région">
             <rdfs:domain rdf:resource="#Meteo" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasPression" rdfs:label="hasPression" rdfs:comment="La pression d'une région">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasPression" rdfs:label="hasPression" rdfs:comment="La pression d'une région">
             <rdfs:domain rdf:resource="#Meteo" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasConditionClimatique" rdfs:label="hasConditionClimatique" rdfs:comment="La température d'une région">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasConditionClimatique" rdfs:label="hasConditionClimatique" rdfs:comment="La température d'une région">
             <rdfs:domain rdf:resource="#Meteo" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasHeure" rdfs:label="hasHeure" rdfs:comment="L'heure de la météo">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasHeure" rdfs:label="hasHeure" rdfs:comment="L'heure de la météo">
             <rdfs:domain rdf:resource="#Meteo" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
-        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary#hasDirectionDuVent" rdfs:label="hasDirectionDuVent" rdfs:comment="La direction de vent d'une région">
+        <rdf:Property rdf:about="https://netflixbutnochill.herokuapp.com/vocabulary#hasDirectionDuVent" rdfs:label="hasDirectionDuVent" rdfs:comment="La direction de vent d'une région">
             <rdfs:domain rdf:resource="#Meteo" />
             <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
-            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary/rdfvocabulary" />
+            <rdfs:isDefinedBy rdf:resource="https://netflixbutnochill.herokuapp.com/vocabulary" />
         </rdf:Property>
 
 
