@@ -32,7 +32,7 @@
             <rdfs:comment xml:lang="fr">La météo dans la région</rdfs:comment>
         </rdfs:Class>
 
-        <!------------------------------------------------ RELATIONS -------------------------------------------------------------->
+        <!-- RELATIONS -->
 
         <!-- RELATIONS MOVIE -->
 

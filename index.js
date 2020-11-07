@@ -1,6 +1,6 @@
 'use strict'
 
-import { cleanData, mergeData, mergeDataNoJointure } from './functions.js';
+import { cleanData, mergeData, mergeDataNoJointure, createRDFXML } from './functions.js';
 import { createRequire } from 'module';
 import pkg from 'jstoxml';
 const { toXML } = pkg;
@@ -321,19 +321,18 @@ app.get("/region/:region", async function (req, res) {
 
         // On jointe les deux merged sur code == Code
         var merged = mergeData(meteo_arr, "code",regions, "Code");
-        merged = cleanData(merged, 'region')
 
         // On le renvoie
         res.format({
             'application/json': function () {
                 res.setHeader('Content-disposition', 'attachment; filename=region.json');
                 res.set('Content-Type', 'application/json');
-                res.json(merged);
+                res.json(cleanData(merged, 'region'));
             },
             'application/rdf+xml': function () {
                 res.setHeader('Content-disposition', 'attachment; filename=region.xml');
                 res.set('Content-Type', 'application/xml');
-                res.send(toXML(merged));
+                res.send(createXMLRDF(merged, 'region'));
             }
         })
 
@@ -376,12 +375,11 @@ app.get("/regionXML/:region", async function (req, res) {
 
             // On jointe les deux merged sur code == Code
             var merged = mergeData(meteo_arr, "code",regions, "Code");
-            merged = cleanData(merged, 'region')
 
             // On le renvoie
             res.setHeader('Content-disposition', 'attachment; filename=region.xml');
             res.set('Content-Type', 'application/xml');
-            res.send(toXML(merged));
+            res.send(createRDFXML(merged, "region"));
 
         })
 })
