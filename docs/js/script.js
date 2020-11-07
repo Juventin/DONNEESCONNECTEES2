@@ -22,7 +22,7 @@ async function launchFetch(){
 	}else{
 		console.log("-- no fetch");
 	}
-	document.getElementById("loading").style.display = "none"
+	document.getElementById("loading").style.display = "none";
 
 }
 
