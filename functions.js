@@ -78,4 +78,33 @@ function cleanData(data, type, word=false) {
     return data2
 }
 
-export { cleanData };
+
+function mergeData(arr1, arr1key, arr2, arr2key) {
+
+    let merged = [];
+
+    for (let i = 0; i < arr1.length; i++) {
+        merged.push({
+            ...arr1[i],
+                ...(arr2.find((truc) => truc[arr2key] === arr1[i][arr1key]))
+        });
+    }
+
+    return merged;
+}
+
+function mergeDataNoJointure(arr1, arr2) {
+
+    let merged = [];
+    for (let i = 0; i < arr1.length; i++) {
+        merged.push({
+            ...arr1[i],
+                ...arr2
+        });
+    }
+
+    return merged;
+}
+
+
+export { cleanData, mergeData, mergeDataNoJointure };
