@@ -220,7 +220,7 @@ app.get("/trendsXML/:movie/:region", async function (req, res) {
         // On le renvoie
         res.setHeader('Content-disposition', 'attachment; filename=trends.xml');
         res.set('Content-Type', 'application/xml');
-        res.send(createXMLRDF(merged3, 'trends', movie));
+        res.send(createRDFXML(merged3, 'trends', movie));
     })
 })
 
@@ -252,7 +252,7 @@ app.get("/movie/:movie", async function (req, res) {
             'application/rdf+xml': function () {
                 res.setHeader('Content-disposition', 'attachment; filename=movie.xml');
                 res.set('Content-Type', 'application/xml');
-                res.send(createXMLRDF(films['movies'], 'films', movie));
+                res.send(createRDFXML(films['movies'], 'films', movie));
             }
         })
     })
@@ -278,7 +278,7 @@ app.get("/movieXML/:movie", async function (req, res) {
         
         res.setHeader('Content-disposition', 'attachment; filename=movie.xml');
         res.set('Content-Type', 'application/xml');
-        res.send(createXMLRDF(films['movies'], 'films', movie));
+        res.send(createRDFXML(films['movies'], 'films', movie));
     })
 })
 
@@ -328,7 +328,7 @@ app.get("/region/:region", async function (req, res) {
             'application/rdf+xml': function () {
                 res.setHeader('Content-disposition', 'attachment; filename=region.xml');
                 res.set('Content-Type', 'application/xml');
-                res.send(createXMLRDF(merged, 'region'));
+                res.send(createRDFXML(merged, 'region'));
             }
         })
 

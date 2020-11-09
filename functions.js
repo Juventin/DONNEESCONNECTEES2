@@ -112,8 +112,9 @@ function createRDFXML(data, type, word=false){
     if (type == 'region') {
         for (let i = 0; i < data.length; i++) {
             let row = ""
+            row = row.concat("<nbnc:Region>")
             row = row.concat("<nbnc:hasCode>", data[i]['Code'], "</nbnc:hasCode>")
-            row = row.concat("<nbnc:Region>", data[i]['Libelle'], "</nbnc:Region>")
+            row = row.concat("<nbnc:hasNomRegion>", data[i]['Libelle'], "</nbnc:hasNomRegion>")
             try {
                 row = row.concat("<nbnc:hasTauxChomage>", data[i]['T2_2020'], "</nbnc:hasTauxChomage>")
                 row = row.concat("<nbnc:hasDate>", data[i]['current_condition']['date'], "</nbnc:hasDate>")
@@ -124,19 +125,21 @@ function createRDFXML(data, type, word=false){
                 row = row.concat("<nbnc:hasPression>", data[i]['current_condition']['pressure'], "</nbnc:hasPression>")
                 row = row.concat("<nbnc:hasHumidite>", data[i]['current_condition']['humidity'], "</nbnc:hasHumidite>")
                 row = row.concat("<nbnc:hasConditionClimatique>", data[i]['current_condition']['condition'], "</nbnc:hasConditionClimatique>")
+                row = row.concat("</nbnc:Region>")
             } catch (e) {}
             
-            data2 = data2.concat(row, '</rdf:RDF>');
+            data2 = data2.concat(row);
         }
+        data2 = data2.concat('</rdf:RDF>')
     }
 
     if (type == 'films') {
         console.log('createXMLRDF')
-        let data2 = '<?xml version="1.0"?>\n<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:nbnc = "https://netflixbutnochill.herokuapp.com/vocabulary">'
         data2 = data2.concat("<nbnc:hasWord>", word, "</nbnc:hasWord>")
         for (let i = 0; i < data.length; i++) {
             let row = ""
             try{
+            row = row.concat("<nbnc:Movie>")
             row = row.concat("<nbnc:hasTitre>", data[i]['title'], "</nbnc:hasTitre>")
             row = row.concat("<nbnc:hasOriginalTitre>", data[i]['original_title'], "</nbnc:hasOriginalTitre>")
             row = row.concat("<nbnc:hasProductionYear>", data[i]['production_year'], "</nbnc:hasProductionYear>")
@@ -145,19 +148,21 @@ function createRDFXML(data, type, word=false){
             row = row.concat("<nbnc:hasLength>", data[i]['length'], "</nbnc:hasLength>")
             row = row.concat("<nbnc:hasCollectionGenres>", data[i]['genres'], "</nbnc:hasCollectionGenres>")
             row = row.concat("<nbnc:hasOriginalLanguage>", data[i]['language'], "</nbnc:hasOriginalLanguage>")
+            row = row.concat("</nbnc:Movie>")
             }catch(e){}
-            data2 = data2.concat(row, '</rdf:RDF>');
+            data2 = data2.concat(row);
         }
+        data2 = data2.concat('</rdf:RDF>')
     }
 
     if (type == 'trends') {
         console.log('createXMLRDF')
-        let data2 = '<?xml version="1.0"?>\n<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:nbnc = "https://netflixbutnochill.herokuapp.com/vocabulary">'
         data2 = data2.concat("<nbnc:hasWord>", word, "</nbnc:hasWord>")
         data2 = data2.concat("<nbnc:hasPopularite>", data[0][0].value[0], "</nbnc:hasPopularite>")
         for (let i = 0; i < data.length; i++) {
             let row = ""
             try{
+            row = row.concat("<nbnc:Movie>")
             row = row.concat("<nbnc:hasTitre>", data[i]['title'], "</nbnc:hasTitre>")
             row = row.concat("<nbnc:hasOriginalTitre>", data[i]['original_title'], "</nbnc:hasOriginalTitre>")
             row = row.concat("<nbnc:hasProductionYear>", data[i]['production_year'], "</nbnc:hasProductionYear>")
@@ -166,10 +171,11 @@ function createRDFXML(data, type, word=false){
             row = row.concat("<nbnc:hasLength>", data[i]['length'], "</nbnc:hasLength>")
             row = row.concat("<nbnc:hasCollectionGenres>", data[i]['genres'], "</nbnc:hasCollectionGenres>")
             row = row.concat("<nbnc:hasOriginalLanguage>", data[i]['language'], "</nbnc:hasOriginalLanguage>")
+            row = row.concat("</nbnc:Movie>")
             }catch(e){}
-            data2 = data2.concat(row, '</rdf:RDF>');
+            data2 = data2.concat(row);
         }
-
+        data2 = data2.concat('</rdf:RDF>')
     }
     return data2
 }
