@@ -216,12 +216,11 @@ app.get("/trendsXML/:movie/:region", async function (req, res) {
 
         // On joint merged avec film
         var merged3 = mergeDataNoJointure(films.movies, merged2);
-        merged3 = cleanData(merged3, 'trends', movie)
 
         // On le renvoie
         res.setHeader('Content-disposition', 'attachment; filename=trends.xml');
         res.set('Content-Type', 'application/xml');
-        res.send(toXML(merged3));
+        res.send(createXMLRDF(merged3, 'trends', movie));
     })
 })
 
@@ -243,19 +242,17 @@ app.get("/movie/:movie", async function (req, res) {
     .then(res => res.json())
     .then(json => {
         films = json;
-        films = cleanData(films['movies'], 'films', movie)
-        console.log(films)
 
         res.format({
             'application/json': function () {
                 res.setHeader('Content-disposition', 'attachment; filename=movie.json');
                 res.set('Content-Type', 'application/json');
-                res.json(films);
+                res.json(cleanData(films['movies'], 'films', movie));
             },
             'application/rdf+xml': function () {
                 res.setHeader('Content-disposition', 'attachment; filename=movie.xml');
                 res.set('Content-Type', 'application/xml');
-                res.send(toXML(films));
+                res.send(createXMLRDF(films['movies'], 'films', movie));
             }
         })
     })
@@ -278,11 +275,10 @@ app.get("/movieXML/:movie", async function (req, res) {
     .then(res => res.json())
     .then(json => {
         films = json;
-        films = cleanData(films['movies'], 'films', movie)
         
         res.setHeader('Content-disposition', 'attachment; filename=movie.xml');
         res.set('Content-Type', 'application/xml');
-        res.send(toXML(films));
+        res.send(createXMLRDF(films['movies'], 'films', movie));
     })
 })
 
