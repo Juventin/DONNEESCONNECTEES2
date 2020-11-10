@@ -145,7 +145,7 @@ async function fetchRegion(region){
 			    },
 
 			    title: {
-			        text: 'Carte de la France par<br>région'
+			        text: 'Régions de France'
 			    },
 
 			    subtitle: {
@@ -228,7 +228,7 @@ async function fetchMovieRegion(title,region){
 			    },
 
 			    title: {
-			        text: 'Carte de la France par<br>région'
+			        text: 'Régions de France'
 			    },
 
 			    subtitle: {
