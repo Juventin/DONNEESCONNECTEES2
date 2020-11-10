@@ -45,11 +45,16 @@ app.get("/vocabulary", function(req, res){
 
     let filePath = path.join('files', 'rdfvocabulary.xml');
 
-    let xml = fs.readFileSync(filePath);
+    fs.readFile(filePath, 'utf8', function (err,data) {
 
-    res.setHeader('Content-disposition', 'attachment; filename=rdfvocabulary.xml');
-    res.set('Content-Type', 'application/xml');
-    res.send(xml);
+        // On remplace PROTOCOLVAR par le chemin du client
+        var xml = data.replace(':PROTOCOLVAR:', req.protocol+"://"+req.headers.host);
+      
+        res.setHeader('Content-disposition', 'attachment; filename=rdfvocabulary.xml');
+        res.set('Content-Type', 'application/xml');
+        res.send(xml);
+      });
+
 })
 
 app.get("/trends/:movie/:region", async function (req, res) {
