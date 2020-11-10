@@ -33,10 +33,15 @@ Son objectif est de metre à disposition des données permettant l'analyse de co
 Les données peuvent être consultées depuis l'interface utilisateur, avec un formulaire en page d'accueil, ou en renseignant directement le titre du film dans l'adresse URL.
 
 ## Routes
-  - **GET /movie/:film** : Renvoie les informations relatives à tous les films dont le titre contient ou est égal au nom choisi.
-  - **GET /region/:region** : Renvoie le taux de chômage ainsi que la météo pour la région choisie.
-  - **GET /trends/:film/:region** : Renvoie les informations relatives à la région choisie, les informations relatives à chaque film contenant le nom choisi, ainsi que la popularité de ce nom dans la région.
   - **GET /vocabulary** : Renvoie le vocabulaire RDF des exports XML.
+  
+  - **GET /movie/:film** : Renvoie les informations relatives à tous les films dont le titre contient ou est égal au nom choisi. Négociation de contenu possible en JSON (par défaut) ou RDF XML.
+  - **GET /region/:region** : Renvoie le taux de chômage ainsi que la météo pour la région choisie. Négociation de contenu possible en JSON (par défaut) ou RDF XML.
+  - **GET /trends/:film/:region** : Renvoie les informations relatives à la région choisie, les informations relatives à chaque film contenant le nom choisi, ainsi que la popularité de ce nom dans la région. Négociation de contenu possible en JSON (par défaut) ou RDF XML.
+  
+  - **GET /movieXML/:film** : Renvoie les informations relatives à tous les films dont le titre contient ou est égal au nom choisi. Contenu en RDF XML uniquement.
+  - **GET /regionXML/:region** : Renvoie le taux de chômage ainsi que la météo pour la région choisie. Contenu en RDF XML uniquement.
+  - **GET /trendsXML/:film/:region** : Renvoie les informations relatives à la région choisie, les informations relatives à chaque film contenant le nom choisi, ainsi que la popularité de ce nom dans la région. Contenu en RDF XML uniquement.
 
 Contraintes: 
   - Tous les parametres placés en URL doivent être correctement encodés. 
