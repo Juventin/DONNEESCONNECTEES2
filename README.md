@@ -35,13 +35,19 @@ Les données peuvent être consultées depuis l'interface utilisateur, avec un f
 ## Routes
   - **GET /vocabulary** : Renvoie le vocabulaire RDF des exports XML.
   
-  - **GET /movie/:film** : Renvoie les informations relatives à tous les films dont le titre contient ou est égal au nom choisi. Négociation de contenu possible en JSON (par défaut) ou RDF XML.
-  - **GET /region/:region** : Renvoie le taux de chômage ainsi que la météo pour la région choisie. Négociation de contenu possible en JSON (par défaut) ou RDF XML.
-  - **GET /trends/:film/:region** : Renvoie les informations relatives à la région choisie, les informations relatives à chaque film contenant le nom choisi, ainsi que la popularité de ce nom dans la région. Négociation de contenu possible en JSON (par défaut) ou RDF XML.
+  - **GET /movie/:film** : Renvoie les informations relatives à tous les films dont le titre contient ou est égal au nom choisi. 
+    - Négociation de contenu possible en JSON (par défaut) ou RDF XML.
+  - **GET /region/:region** : Renvoie le taux de chômage ainsi que la météo pour la région choisie.  
+    - Négociation de contenu possible en JSON (par défaut) ou RDF XML.
+  - **GET /trends/:film/:region** : Renvoie les informations relatives à la région choisie, les informations relatives à chaque film contenant le nom choisi, ainsi que la popularité de ce nom dans la région.  
+    - Négociation de contenu possible en JSON (par défaut) ou RDF XML.
   
-  - **GET /movieXML/:film** : Renvoie les informations relatives à tous les films dont le titre contient ou est égal au nom choisi. Contenu en RDF XML uniquement.
-  - **GET /regionXML/:region** : Renvoie le taux de chômage ainsi que la météo pour la région choisie. Contenu en RDF XML uniquement.
-  - **GET /trendsXML/:film/:region** : Renvoie les informations relatives à la région choisie, les informations relatives à chaque film contenant le nom choisi, ainsi que la popularité de ce nom dans la région. Contenu en RDF XML uniquement.
+  - **GET /movieXML/:film** : Renvoie les informations relatives à tous les films dont le titre contient ou est égal au nom choisi.  
+    - Accès direct au RDF XML.
+  - **GET /regionXML/:region** : Renvoie le taux de chômage ainsi que la météo pour la région choisie.  
+    - Accès direct au RDF XML.
+  - **GET /trendsXML/:film/:region** : Renvoie les informations relatives à la région choisie, les informations relatives à chaque film contenant le nom choisi, ainsi que la popularité de ce nom dans la région.  
+    - Accès direct au RDF XML.
 
 Contraintes: 
   - Tous les parametres placés en URL doivent être correctement encodés. 
