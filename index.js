@@ -128,19 +128,18 @@ app.get("/trends/:movie/:region", async function (req, res) {
         var merged2 = mergeData(merged, 'Region', trends, 'geoName');
         // On joint merged avec film
         var merged3 = mergeDataNoJointure(films.movies, merged2);
-        merged3 = cleanData(merged3, 'trends', movie)
 
         // On le renvoie
         res.format({
             'application/json': function () {
                 res.setHeader('Content-disposition', 'attachment; filename=trends.json');
                 res.set('Content-Type', 'application/json');
-                res.json(merged3);
+                res.json(cleanData(merged3, 'trends', movie));
             },
             'application/rdf+xml': function () {
                 res.setHeader('Content-disposition', 'attachment; filename=trends.xml');
                 res.set('Content-Type', 'application/xml');
-                res.send(toXML(merged3));
+                res.send(createRDFXML(merged3, 'trends', movie));
             }
         })
     })
