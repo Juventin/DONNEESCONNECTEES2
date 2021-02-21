@@ -18,6 +18,7 @@ var fs = require("fs");
 var path = require('path');
 
 const googleTrends = require('google-trends-api');
+var allocine = require('allocine-api');
 
 var cors = require('cors');
 var corsOrigins = '*'
